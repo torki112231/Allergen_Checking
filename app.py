@@ -44,16 +44,28 @@ if 'language' not in st.session_state:
 # =========================================================
 
 translations = {
+
     'AR': {
         'dir': 'rtl',
 
         'badge': 'سلامتك تبدأ قبل أول لقمة',
+
         'hero_1': 'اعرف',
-        'hero_2': 'مسبب',
-        'hero_3': 'الحساسية قبل ما يوصلك.',
+        'hero_2': 'المسبب',
+        'hero_3': 'قبل لا يوصلك.',
+
         'hero_desc':
             'صوّر مكونات المنتج، وmosabb يحللها بالذكاء الاصطناعي '
             'ويقارنها بحساسيتك وحساسيات عائلتك.',
+
+        'step1_title': 'صوّر',
+        'step1_desc': 'صوّر قائمة مكونات المنتج',
+
+        'step2_title': 'نحلل',
+        'step2_desc': 'mosabb يقرأ ويحلل المكونات',
+
+        'step3_title': 'اعرف',
+        'step3_desc': 'نعطيك النتيجة لك ولعائلتك',
 
         'login': 'تسجيل الدخول',
         'register': 'إنشاء حساب',
@@ -68,40 +80,68 @@ translations = {
         'profile_tab': 'ملفي وعائلتي',
 
         'welcome': 'أهلاً',
+        'today': 'وش حاب تفحص اليوم؟',
+
         'scan_title': 'افحص منتجك',
-        'scan_desc': 'صوّر قائمة المكونات أو ارفع صورة واضحة لها.',
-        'check_for': 'mosabb سيفحص المنتج لـ',
+        'scan_desc':
+            'صوّر قائمة المكونات أو ارفع صورة واضحة لها، والباقي علينا.',
+
+        'check_for': 'سيتم فحص المنتج للأشخاص التاليين',
+
         'camera': 'صوّر مكونات المنتج',
         'upload': 'أو ارفع صورة',
-        'analyze': 'تحليل المنتج',
+
+        'analyze': 'حلّل المنتج',
+
         'original': 'الصورة الأصلية',
         'detected': 'منطقة المكونات المكتشفة',
-        'text': 'النص المقروء',
+        'text': 'النص اللي قرأه mosabb',
+
+        'processing': 'لحظة... mosabb يحلل المكونات 🔍',
+
+        'no_label':
+            'ما قدرنا نحدد قائمة المكونات. جرّب تصورها بشكل أوضح وأقرب.',
+
+        'no_text':
+            'حددنا مكان المكونات، لكن ما قدرنا نقرأ النص بشكل واضح.',
+
         'result': 'نتيجة الفحص',
 
-        'processing': 'mosabb يحلل المنتج...',
-        'no_label':
-            'ما قدرنا نحدد قائمة المكونات. جرّب صورة أوضح وأقرب.',
-        'no_text':
-            'حددنا قائمة المكونات لكن ما قدرنا نقرأ النص.',
+        'safe_title': 'أمورك طيبة',
+        'safe_text':
+            'ما اكتشفنا أي مكوّن مرتبط بحساسيتك المسجلة.',
 
-        'danger': 'هذا المنتج قد يسبب حساسية لـ',
-        'safe': 'لم نجد مسبب الحساسية المسجل لـ',
-        'allergy_type': 'نوع الحساسية',
-        'found': 'تم العثور على',
+        'danger_title': 'انتبه',
+        'danger_text':
+            'هذا المنتج يحتوي على مكونات مرتبطة بحساسيتك.',
+
+        'family_safe_title': 'أموره طيبة',
+        'family_safe_text':
+            'ما اكتشفنا أي مكوّن مرتبط بحساسيته المسجلة.',
+
+        'family_danger_title': 'هذا المنتج مو مناسب لـ',
+        'family_danger_text':
+            'لقينا مكونات مرتبطة بحساسيته.',
+
+        'allergy_type': 'الحساسية',
+        'found': 'المكونات المكتشفة',
 
         'profile_title': 'ملفي الصحي',
+
         'profile_desc':
             'سجل حساسيتك مرة واحدة، وmosabb يتذكرها في كل فحص.',
+
         'my_allergies': 'حساسيتي',
         'save': 'حفظ حساسيتي',
         'saved': 'تم حفظ حساسيتك',
 
         'family_title': 'عائلتي',
+
         'family_desc':
-            'أضف أفراد العائلة ليتم فحص المنتج للجميع في نفس الوقت.',
+            'أضف الأطفال أو أفراد العائلة، وmosabb يفحص المنتج للجميع بنفس اللحظة.',
+
         'no_family':
-            'ما أضفت أحد للعائلة. تقدر تستخدم mosabb لنفسك عادي.',
+            'ما أضفت أحد للعائلة للحين. تقدر تستخدم mosabb لنفسك عادي.',
 
         'add_member': 'إضافة فرد للعائلة',
         'member_name': 'اسم الشخص',
@@ -119,28 +159,42 @@ translations = {
         'other': 'أخرى',
 
         'need_allergy':
-            'سجل حساسيتك أول من صفحة ملفي وعائلتي.',
+            'سجل حساسيتك أول من صفحة ملفي وعائلتي عشان نعرف وش نبحث عنه.',
+
         'fill': 'عب البيانات كلها.',
         'wrong': 'البريد الإلكتروني أو كلمة المرور غير صحيحة.',
         'used': 'البريد الإلكتروني مستخدم من قبل.',
-        'created': 'تم إنشاء الحساب. سجل دخولك الآن.',
+        'created': 'تم إنشاء الحساب. تقدر تسجل دخولك الآن.',
         'choose': 'اختر حساسية واحدة على الأقل.',
         'enter_name': 'اكتب اسم الشخص.',
 
         'disclaimer':
-            'mosabb أداة مساعدة. تأكد دائماً من تحذيرات الحساسية على العبوة.'
+            'النتيجة تعتمد على جودة الصورة ودقة قراءة المكونات. '
+            'تأكد دائماً من تحذيرات الحساسية المكتوبة على العبوة.'
     },
+
 
     'EN': {
         'dir': 'ltr',
 
         'badge': 'Safety starts before the first bite',
+
         'hero_1': 'Know the',
         'hero_2': 'cause',
         'hero_3': 'before it reaches you.',
+
         'hero_desc':
-            'Scan the ingredient label and let mosabb analyze it '
+            'Scan the ingredient label and let mosabb analyze it with AI '
             'against your allergy profile and your family.',
+
+        'step1_title': 'Scan',
+        'step1_desc': 'Capture the ingredient label',
+
+        'step2_title': 'Analyze',
+        'step2_desc': 'mosabb reads and checks the ingredients',
+
+        'step3_title': 'Know',
+        'step3_desc': 'Get a personalized result',
 
         'login': 'Log in',
         'register': 'Create account',
@@ -155,41 +209,68 @@ translations = {
         'profile_tab': 'My Profile & Family',
 
         'welcome': 'Welcome',
+        'today': 'What are we checking today?',
+
         'scan_title': 'Scan your product',
         'scan_desc':
-            'Take a clear photo of the ingredients or upload one.',
-        'check_for': 'mosabb will check this product for',
+            'Take a clear photo of the ingredient label or upload one. We’ll handle the rest.',
+
+        'check_for': 'This product will be checked for',
+
         'camera': 'Take a photo',
         'upload': 'Or upload an image',
+
         'analyze': 'Analyze Product',
+
         'original': 'Original image',
-        'detected': 'Detected ingredient label',
-        'text': 'Extracted text',
-        'result': 'Scan result',
+        'detected': 'Detected ingredients area',
+        'text': 'What mosabb read',
 
-        'processing': 'mosabb is analyzing the product...',
+        'processing': 'One moment... mosabb is checking the ingredients 🔍',
+
         'no_label':
-            'We could not detect the ingredient label. Try a clearer image.',
-        'no_text':
-            'The label was detected but the text could not be read.',
+            'We could not detect the ingredient label. Try a closer and clearer image.',
 
-        'danger': 'This product may trigger an allergy for',
-        'safe': 'No registered allergen detected for',
+        'no_text':
+            'We found the label, but could not read the text clearly.',
+
+        'result': 'Scan Result',
+
+        'safe_title': 'Looking good',
+        'safe_text':
+            'We did not detect any ingredient linked to your registered allergies.',
+
+        'danger_title': 'Heads up',
+        'danger_text':
+            'This product contains ingredients linked to your registered allergies.',
+
+        'family_safe_title': 'Looking good',
+        'family_safe_text':
+            'We did not detect anything linked to their registered allergies.',
+
+        'family_danger_title': 'This product may not be suitable for',
+        'family_danger_text':
+            'We found ingredients linked to their registered allergies.',
+
         'allergy_type': 'Allergy',
-        'found': 'Detected',
+        'found': 'Detected ingredients',
 
         'profile_title': 'My Health Profile',
+
         'profile_desc':
-            'Save your allergies once and mosabb remembers them.',
+            'Save your allergies once and mosabb remembers them for every scan.',
+
         'my_allergies': 'My allergies',
         'save': 'Save my allergies',
         'saved': 'Your allergies have been saved',
 
         'family_title': 'My Family',
+
         'family_desc':
-            'Add family members and check one product for everyone.',
+            'Add children or family members and check one product for everyone at once.',
+
         'no_family':
-            'No family members added. You can still use mosabb for yourself.',
+            'No family members added yet. You can still use mosabb for yourself.',
 
         'add_member': 'Add family member',
         'member_name': 'Name',
@@ -207,16 +288,18 @@ translations = {
         'other': 'Other',
 
         'need_allergy':
-            'Add your allergy first from My Profile & Family.',
+            'Add your allergies first so mosabb knows what to look for.',
+
         'fill': 'Please fill in all fields.',
         'wrong': 'Incorrect email or password.',
         'used': 'This email is already registered.',
         'created': 'Account created. You can now log in.',
         'choose': 'Select at least one allergy.',
-        'enter_name': 'Enter the person name.',
+        'enter_name': 'Enter the person’s name.',
 
         'disclaimer':
-            'mosabb is an assistive tool. Always check the package allergy warning.'
+            'Results depend on image quality and ingredient reading accuracy. '
+            'Always check the allergy warnings printed on the product.'
     }
 }
 
@@ -225,280 +308,366 @@ t = translations[st.session_state.language]
 
 
 # =========================================================
-# CSS — st.html ONLY
+# CSS
 # =========================================================
 
-st.html(
-    f"""
-    <style>
+css = """
+<style>
 
-    :root {{
-        --green: #31F2A0;
-        --green-soft: rgba(49, 242, 160, 0.10);
-        --bg: #070C10;
-        --card: rgba(15, 22, 27, 0.82);
-        --border: rgba(255,255,255,0.07);
-        --muted: #8A98A3;
-        --danger: #FF7777;
-    }}
+:root {
+    --green: #31F2A0;
+    --aqua: #63D7FF;
+    --bg: #060B0F;
+    --card: rgba(15,22,28,.82);
+    --border: rgba(255,255,255,.075);
+    --muted: #8C99A4;
+    --red: #FF6969;
+}
 
-    .stApp {{
-        direction: {t['dir']};
-        background:
-            radial-gradient(
-                circle at 12% 10%,
-                rgba(49,242,160,.10),
-                transparent 28%
-            ),
-            radial-gradient(
-                circle at 90% 5%,
-                rgba(57,110,255,.08),
-                transparent 25%
-            ),
-            linear-gradient(
-                150deg,
-                #07100D 0%,
-                #080D12 48%,
-                #080B11 100%
-            );
-        color: white;
-    }}
+.stApp {
+    direction: __DIR__;
+    background:
+        radial-gradient(circle at 8% 5%, rgba(49,242,160,.12), transparent 27%),
+        radial-gradient(circle at 94% 6%, rgba(65,115,255,.10), transparent 23%),
+        linear-gradient(150deg, #06100C 0%, #070C11 48%, #080A10 100%);
+    color: #F7FAFB;
+}
 
-    .block-container {{
-        max-width: 1150px;
-        padding-top: 1.3rem;
-        padding-bottom: 5rem;
-    }}
+.block-container {
+    max-width: 1160px;
+    padding-top: 1.35rem;
+    padding-bottom: 5rem;
+}
 
-    #MainMenu {{
-        visibility: hidden;
-    }}
+#MainMenu {
+    visibility: hidden;
+}
 
-    footer {{
-        visibility: hidden;
-    }}
+footer {
+    visibility: hidden;
+}
 
-    header {{
-        background: transparent !important;
-    }}
+header {
+    background: transparent !important;
+}
 
-    .mosabb-logo {{
-        font-size: 31px;
-        font-weight: 950;
-        letter-spacing: -1.4px;
-        color: white;
-    }}
+/* logo */
 
-    .mosabb-dot {{
-        color: var(--green);
-    }}
+.logo {
+    font-size: 31px;
+    font-weight: 950;
+    letter-spacing: -1.5px;
+}
 
-    .hero {{
-        padding-top: 55px;
-        padding-bottom: 45px;
-    }}
+.logo-dot {
+    color: var(--green);
+}
 
-    .hero-badge {{
-        display: inline-block;
-        padding: 9px 15px;
-        border: 1px solid rgba(49,242,160,.22);
-        border-radius: 999px;
-        background: rgba(49,242,160,.07);
-        color: #74F7BE;
-        font-weight: 800;
-        font-size: 14px;
-        margin-bottom: 22px;
-    }}
+/* hero */
 
-    .hero-title {{
-        font-size: clamp(48px, 7vw, 84px);
-        font-weight: 950;
-        letter-spacing: -4px;
-        line-height: 0.98;
-        max-width: 900px;
-        margin: 0;
-    }}
+.hero {
+    padding: 65px 0 48px 0;
+}
 
-    .gradient {{
-        background: linear-gradient(
-            90deg,
-            #31F2A0,
-            #6AD5FF
+.hero-badge {
+    display: inline-block;
+    padding: 9px 16px;
+    border-radius: 999px;
+    background: rgba(49,242,160,.07);
+    border: 1px solid rgba(49,242,160,.23);
+    color: #72F8BC;
+    font-size: 14px;
+    font-weight: 800;
+    margin-bottom: 25px;
+}
+
+.hero-title {
+    font-size: clamp(53px, 7vw, 90px);
+    line-height: .98;
+    letter-spacing: -4.5px;
+    font-weight: 950;
+    max-width: 920px;
+    margin: 0;
+}
+
+.gradient {
+    background: linear-gradient(90deg, var(--green), var(--aqua));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-desc {
+    margin-top: 28px;
+    max-width: 730px;
+    color: #99A6AF;
+    line-height: 1.8;
+    font-size: 18px;
+}
+
+/* section */
+
+.kicker {
+    color: var(--green);
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+}
+
+.section-title {
+    font-size: 35px;
+    font-weight: 950;
+    letter-spacing: -1px;
+    margin-bottom: 7px;
+}
+
+.section-desc {
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 24px;
+}
+
+/* cards */
+
+.glass {
+    padding: 28px;
+    border-radius: 25px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(18,28,33,.92),
+            rgba(10,16,21,.82)
         );
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }}
+    border: 1px solid var(--border);
+    box-shadow: 0 30px 100px rgba(0,0,0,.28);
+    backdrop-filter: blur(18px);
+}
 
-    .hero-desc {{
-        margin-top: 25px;
-        max-width: 720px;
-        color: var(--muted);
-        font-size: 18px;
-        line-height: 1.8;
-    }}
+.soft-card {
+    padding: 18px 20px;
+    border-radius: 17px;
+    background: rgba(255,255,255,.025);
+    border: 1px solid var(--border);
+    margin-bottom: 10px;
+}
 
-    .glass {{
-        padding: 27px;
-        border-radius: 24px;
-        background: var(--card);
-        border: 1px solid var(--border);
-        box-shadow: 0 30px 90px rgba(0,0,0,.28);
-        backdrop-filter: blur(18px);
-    }}
+.person-name {
+    font-size: 18px;
+    font-weight: 900;
+}
 
-    .soft-card {{
-        padding: 19px;
-        border-radius: 18px;
-        background: rgba(255,255,255,.025);
-        border: 1px solid var(--border);
-        margin-bottom: 10px;
-    }}
+.person-allergy {
+    color: #FF9696;
+    margin-top: 5px;
+    font-size: 14px;
+}
 
-    .kicker {{
-        font-size: 12px;
-        font-weight: 900;
-        letter-spacing: 1.4px;
-        color: var(--green);
-        margin-bottom: 8px;
-    }}
+/* how it works */
 
-    .section-title {{
-        font-size: 34px;
-        font-weight: 950;
-        letter-spacing: -1px;
-        margin-bottom: 7px;
-    }}
+.step-card {
+    padding: 22px;
+    border-radius: 19px;
+    background: rgba(255,255,255,.025);
+    border: 1px solid var(--border);
+    min-height: 145px;
+}
 
-    .section-desc {{
-        color: var(--muted);
-        line-height: 1.7;
-        margin-bottom: 23px;
-    }}
+.step-number {
+    color: var(--green);
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+}
 
-    .person-name {{
-        font-size: 18px;
-        font-weight: 900;
-    }}
+.step-title {
+    font-size: 22px;
+    font-weight: 900;
+    margin-bottom: 6px;
+}
 
-    .person-allergy {{
-        color: #FF9696;
-        margin-top: 5px;
-        font-size: 14px;
-    }}
+.step-desc {
+    color: var(--muted);
+    line-height: 1.6;
+    font-size: 14px;
+}
 
-    .pill {{
-        display: inline-block;
-        border-radius: 999px;
-        padding: 7px 12px;
-        margin: 4px;
-        color: #FF9797;
-        background: rgba(255,90,90,.08);
-        border: 1px solid rgba(255,90,90,.14);
-        font-size: 13px;
-        font-weight: 800;
-    }}
+/* pills */
 
-    .result-danger {{
-        padding: 22px;
-        border-radius: 20px;
-        border: 1px solid rgba(255,90,90,.22);
-        background:
-            linear-gradient(
-                135deg,
-                rgba(255,75,75,.11),
-                rgba(255,75,75,.035)
-            );
-        margin: 12px 0;
-    }}
+.pill {
+    display: inline-block;
+    padding: 7px 12px;
+    margin: 4px;
+    border-radius: 999px;
+    background: rgba(255,90,90,.08);
+    border: 1px solid rgba(255,90,90,.15);
+    color: #FF9696;
+    font-size: 13px;
+    font-weight: 800;
+}
 
-    .result-safe {{
-        padding: 22px;
-        border-radius: 20px;
-        border: 1px solid rgba(49,242,160,.20);
-        background:
-            linear-gradient(
-                135deg,
-                rgba(49,242,160,.10),
-                rgba(49,242,160,.03)
-            );
-        margin: 12px 0;
-    }}
+/* result cards */
 
-    .stButton > button {{
-        min-height: 48px;
-        border-radius: 14px !important;
-        border: 1px solid rgba(255,255,255,.09);
-        background: #121B21;
-        font-weight: 800;
-        transition: .2s ease;
-    }}
+.safe-result {
+    position: relative;
+    overflow: hidden;
+    padding: 30px;
+    border-radius: 25px;
+    margin: 18px 0;
+    background:
+        radial-gradient(circle at 92% 15%, rgba(49,242,160,.23), transparent 30%),
+        linear-gradient(135deg, rgba(49,242,160,.11), rgba(49,242,160,.025));
+    border: 1px solid rgba(49,242,160,.25);
+}
 
-    .stButton > button:hover {{
-        color: var(--green) !important;
-        border-color: var(--green) !important;
-        transform: translateY(-1px);
-    }}
+.danger-result {
+    position: relative;
+    overflow: hidden;
+    padding: 30px;
+    border-radius: 25px;
+    margin: 18px 0;
+    background:
+        radial-gradient(circle at 92% 15%, rgba(255,95,95,.22), transparent 30%),
+        linear-gradient(135deg, rgba(255,80,80,.13), rgba(255,80,80,.025));
+    border: 1px solid rgba(255,90,90,.28);
+}
 
-    .stTextInput input {{
-        background: #0E151B !important;
-        min-height: 48px;
-        border-radius: 13px !important;
-        border: 1px solid rgba(255,255,255,.08) !important;
-    }}
+.result-status-safe {
+    color: #62F3AF;
+    font-size: 12px;
+    font-weight: 950;
+    letter-spacing: 1.5px;
+    margin-bottom: 12px;
+}
 
-    [data-baseweb="select"] > div {{
-        background: #0E151B !important;
-        border-radius: 13px !important;
-        border-color: rgba(255,255,255,.08) !important;
-    }}
+.result-status-danger {
+    color: #FF8585;
+    font-size: 12px;
+    font-weight: 950;
+    letter-spacing: 1.5px;
+    margin-bottom: 12px;
+}
 
-    [data-testid="stFileUploaderDropzone"] {{
-        border: 1px dashed rgba(49,242,160,.25);
-        background: rgba(49,242,160,.025);
-        border-radius: 20px;
-    }}
+.result-title {
+    font-size: 31px;
+    font-weight: 950;
+    letter-spacing: -.7px;
+    margin-bottom: 8px;
+}
 
-    .stTabs [data-baseweb="tab-list"] {{
-        gap: 8px;
-    }}
+.result-text {
+    color: #A2ADB5;
+    font-size: 16px;
+    line-height: 1.7;
+}
 
-    .stTabs [data-baseweb="tab"] {{
-        padding: 10px 17px;
-        border-radius: 11px;
-        font-weight: 800;
-    }}
+.result-detail {
+    margin-top: 20px;
+    padding: 16px 18px;
+    border-radius: 15px;
+    background: rgba(0,0,0,.18);
+    border: 1px solid rgba(255,255,255,.06);
+}
 
-    .stTabs [aria-selected="true"] {{
-        color: var(--green) !important;
-        background: rgba(49,242,160,.08) !important;
-    }}
+/* buttons */
 
-    [data-testid="stAlert"] {{
-        border-radius: 16px;
-    }}
+.stButton > button {
+    min-height: 49px;
+    border-radius: 14px !important;
+    border: 1px solid rgba(255,255,255,.09);
+    background: #111B21;
+    font-weight: 850;
+    transition: all .2s ease;
+}
 
-    @media (max-width: 700px) {{
+.stButton > button:hover {
+    transform: translateY(-1px);
+    border-color: var(--green) !important;
+    color: var(--green) !important;
+    box-shadow: 0 12px 30px rgba(49,242,160,.08);
+}
 
-        .hero {{
-            padding-top: 30px;
-        }}
+/* inputs */
 
-        .hero-title {{
-            letter-spacing: -2px;
-        }}
+.stTextInput input {
+    background: #0D151A !important;
+    min-height: 49px;
+    border-radius: 14px !important;
+    border: 1px solid rgba(255,255,255,.08) !important;
+}
 
-        .hero-desc {{
-            font-size: 16px;
-        }}
+[data-baseweb="select"] > div {
+    background: #0D151A !important;
+    border-radius: 14px !important;
+    border-color: rgba(255,255,255,.08) !important;
+}
 
-        .section-title {{
-            font-size: 27px;
-        }}
-    }}
+/* uploader */
 
-    </style>
-    """
+[data-testid="stFileUploaderDropzone"] {
+    min-height: 180px;
+    border-radius: 21px;
+    background: rgba(49,242,160,.022);
+    border: 1px dashed rgba(49,242,160,.27);
+}
+
+/* tabs */
+
+.stTabs [data-baseweb="tab-list"] {
+    gap: 8px;
+}
+
+.stTabs [data-baseweb="tab"] {
+    padding: 10px 17px;
+    border-radius: 11px;
+    font-weight: 800;
+}
+
+.stTabs [aria-selected="true"] {
+    color: var(--green) !important;
+    background: rgba(49,242,160,.08) !important;
+}
+
+[data-testid="stAlert"] {
+    border-radius: 16px;
+}
+
+@media (max-width: 700px) {
+
+    .hero {
+        padding-top: 35px;
+    }
+
+    .hero-title {
+        letter-spacing: -2.5px;
+    }
+
+    .hero-desc {
+        font-size: 16px;
+    }
+
+    .section-title {
+        font-size: 28px;
+    }
+
+    .glass {
+        padding: 21px;
+    }
+
+    .result-title {
+        font-size: 25px;
+    }
+}
+
+</style>
+"""
+
+css = css.replace(
+    '__DIR__',
+    t['dir']
 )
+
+st.html(css)
 
 
 # =========================================================
@@ -515,6 +684,7 @@ ALLERGIES = [
 
 
 ALLERGEN_KEYWORDS = {
+
     'Milk / Dairy': [
         'milk',
         'milk powder',
@@ -532,6 +702,7 @@ ALLERGEN_KEYWORDS = {
         'مسحوق الحليب',
         'مصل الحليب',
         'مشتقات الحليب',
+        'بروتين الحليب',
         'كازين',
         'لاكتوز',
         'زبدة',
@@ -553,8 +724,10 @@ ALLERGEN_KEYWORDS = {
     'Sesame': [
         'sesame',
         'sesame seed',
+        'sesame seeds',
         'tahini',
         'سمسم',
+        'بذور السمسم',
         'طحينة'
     ],
 
@@ -573,13 +746,19 @@ ALLERGEN_KEYWORDS = {
 
     'Tree Nuts': [
         'almond',
+        'almonds',
         'walnut',
+        'walnuts',
         'cashew',
+        'cashews',
         'pistachio',
+        'pistachios',
         'hazelnut',
+        'hazelnuts',
         'pecan',
         'macadamia',
         'لوز',
+        'اللوز',
         'جوز',
         'كاجو',
         'فستق',
@@ -676,13 +855,13 @@ def run_ocr(
     reader
 ):
 
-    result = reader.readtext(
+    results = reader.readtext(
         np.array(image),
         detail=0,
         paragraph=True
     )
 
-    return ' '.join(result)
+    return ' '.join(results)
 
 
 def find_matches(
@@ -744,7 +923,7 @@ def check_people(
     people
 ):
 
-    result = []
+    results = []
 
 
     for person in people:
@@ -765,13 +944,17 @@ def check_people(
                 matches[allergy] = detected
 
 
-        result.append({
+        results.append({
             'name': person['name'],
+            'is_owner': person.get(
+                'is_owner',
+                False
+            ),
             'matches': matches
         })
 
 
-    return result
+    return results
 
 
 # =========================================================
@@ -788,8 +971,8 @@ with logo_col:
 
     st.html(
         """
-        <div class="mosabb-logo">
-            mosabb<span class="mosabb-dot">.</span>
+        <div class="logo">
+            mosabb<span class="logo-dot">.</span>
         </div>
         """
     )
@@ -797,9 +980,12 @@ with logo_col:
 
 with lang_col:
 
-    lang = st.segmented_control(
+    language = st.segmented_control(
         'Language',
-        ['العربية', 'English'],
+        [
+            'العربية',
+            'English'
+        ],
         default=(
             'العربية'
             if st.session_state.language == 'AR'
@@ -809,16 +995,17 @@ with lang_col:
     )
 
 
-    new_lang = (
+    new_language = (
         'AR'
-        if lang == 'العربية'
+        if language == 'العربية'
         else 'EN'
     )
 
 
-    if new_lang != st.session_state.language:
+    if new_language != st.session_state.language:
 
-        st.session_state.language = new_lang
+        st.session_state.language = new_language
+
         st.rerun()
 
 
@@ -864,7 +1051,10 @@ st.html(
 if st.session_state.user is None:
 
     info_col, login_col = st.columns(
-        [0.9, 1.1],
+        [
+            0.95,
+            1.05
+        ],
         gap='large'
     )
 
@@ -872,47 +1062,97 @@ if st.session_state.user is None:
     with info_col:
 
         st.html(
-            """
+            f"""
             <div class="glass">
 
                 <div class="kicker">
-                    FAMILY PROTECTION
+                    HOW IT WORKS
                 </div>
 
                 <div class="section-title">
-                    One scan.<br>
-                    Everyone protected.
+                    Simple. Personal. Fast.
                 </div>
 
                 <div class="section-desc">
-                    Your allergy profile stays with you.
-                    Family members can be added whenever you need them.
-                    mosabb checks everyone automatically.
-                </div>
-
-                <div class="soft-card">
-                    <div class="person-name">
-                        You
-                    </div>
-
-                    <div class="person-allergy">
-                        Milk / Dairy
-                    </div>
-                </div>
-
-                <div class="soft-card">
-                    <div class="person-name">
-                        Child
-                    </div>
-
-                    <div class="person-allergy">
-                        Peanuts · Sesame
-                    </div>
+                    mosabb turns a product label into a personalized
+                    allergy check in three simple steps.
                 </div>
 
             </div>
             """
         )
+
+
+        step_cols = st.columns(3)
+
+
+        with step_cols[0]:
+
+            st.html(
+                f"""
+                <div class="step-card">
+
+                    <div class="step-number">
+                        01
+                    </div>
+
+                    <div class="step-title">
+                        {t['step1_title']}
+                    </div>
+
+                    <div class="step-desc">
+                        {t['step1_desc']}
+                    </div>
+
+                </div>
+                """
+            )
+
+
+        with step_cols[1]:
+
+            st.html(
+                f"""
+                <div class="step-card">
+
+                    <div class="step-number">
+                        02
+                    </div>
+
+                    <div class="step-title">
+                        {t['step2_title']}
+                    </div>
+
+                    <div class="step-desc">
+                        {t['step2_desc']}
+                    </div>
+
+                </div>
+                """
+            )
+
+
+        with step_cols[2]:
+
+            st.html(
+                f"""
+                <div class="step-card">
+
+                    <div class="step-number">
+                        03
+                    </div>
+
+                    <div class="step-title">
+                        {t['step3_title']}
+                    </div>
+
+                    <div class="step-desc">
+                        {t['step3_desc']}
+                    </div>
+
+                </div>
+                """
+            )
 
 
     with login_col:
@@ -953,7 +1193,8 @@ if st.session_state.user is None:
 
             if st.button(
                 t['enter'],
-                use_container_width=True
+                use_container_width=True,
+                key='login'
             ):
 
                 user = login_user(
@@ -971,6 +1212,7 @@ if st.session_state.user is None:
                     }
 
                     st.rerun()
+
 
                 else:
 
@@ -1015,10 +1257,15 @@ if st.session_state.user is None:
 
             if st.button(
                 t['create'],
-                use_container_width=True
+                use_container_width=True,
+                key='register'
             ):
 
-                if not name or not email or not password:
+                if (
+                    not name
+                    or not email
+                    or not password
+                ):
 
                     st.warning(
                         t['fill']
@@ -1048,7 +1295,7 @@ if st.session_state.user is None:
 
 
 # =========================================================
-# DASHBOARD
+# LOGGED IN
 # =========================================================
 
 else:
@@ -1056,27 +1303,36 @@ else:
     user = st.session_state.user
 
 
-    user_col, logout_col = st.columns(
-        [8, 2],
+    greeting_col, logout_col = st.columns(
+        [
+            8,
+            2
+        ],
         vertical_alignment='center'
     )
 
 
-    with user_col:
+    with greeting_col:
 
         st.html(
             f"""
             <div class="soft-card">
-                <span style="color:#8A98A3;">
-                    {t['welcome']}
-                </span>
 
-                <strong style="
-                    margin-inline-start:8px;
-                    font-size:19px;
+                <div style="
+                    color:#8C99A4;
+                    font-size:13px;
+                    margin-bottom:3px;
                 ">
-                    {user['name']} 👋
-                </strong>
+                    {t['welcome']} {user['name']} 👋
+                </div>
+
+                <div style="
+                    font-size:20px;
+                    font-weight:900;
+                ">
+                    {t['today']}
+                </div>
+
             </div>
             """
         )
@@ -1090,6 +1346,7 @@ else:
         ):
 
             st.session_state.user = None
+
             st.rerun()
 
 
@@ -1107,7 +1364,7 @@ else:
 
         st.html(
             f"""
-            <div style="height:20px;"></div>
+            <div style="height:22px;"></div>
 
             <div class="kicker">
                 AI PRODUCT SCANNER
@@ -1141,7 +1398,8 @@ else:
 
             people.append({
                 'name': user['name'],
-                'allergies': my_allergies
+                'allergies': my_allergies,
+                'is_owner': True
             })
 
 
@@ -1149,7 +1407,8 @@ else:
 
             people.append({
                 'name': member['name'],
-                'allergies': member['allergies']
+                'allergies': member['allergies'],
+                'is_owner': False
             })
 
 
@@ -1165,7 +1424,8 @@ else:
             st.html(
                 f"""
                 <div style="
-                    color:#8A98A3;
+                    color:#8C99A4;
+                    font-size:14px;
                     margin-bottom:12px;
                 ">
                     {t['check_for']}
@@ -1174,37 +1434,58 @@ else:
             )
 
 
-            for person in people:
-
-                allergy_text = ', '.join(
-                    person['allergies']
+            person_columns = st.columns(
+                min(
+                    len(people),
+                    3
                 )
+            )
 
 
-                st.html(
-                    f"""
-                    <div class="soft-card">
+            for index, person in enumerate(
+                people
+            ):
 
-                        <div class="person-name">
-                            {person['name']}
+                with person_columns[
+                    index % len(person_columns)
+                ]:
+
+                    allergy_text = ', '.join(
+                        person['allergies']
+                    )
+
+
+                    st.html(
+                        f"""
+                        <div class="soft-card">
+
+                            <div class="person-name">
+                                {person['name']}
+                            </div>
+
+                            <div class="person-allergy">
+                                {allergy_text}
+                            </div>
+
                         </div>
-
-                        <div class="person-allergy">
-                            {allergy_text}
-                        </div>
-
-                    </div>
-                    """
-                )
+                        """
+                    )
 
 
-            cam_col, upload_col = st.columns(
+            st.html(
+                """
+                <div style="height:12px;"></div>
+                """
+            )
+
+
+            camera_col, upload_col = st.columns(
                 2,
                 gap='large'
             )
 
 
-            with cam_col:
+            with camera_col:
 
                 camera_image = st.camera_input(
                     t['camera']
@@ -1248,7 +1529,8 @@ else:
 
                 if st.button(
                     '✦ ' + t['analyze'],
-                    use_container_width=True
+                    use_container_width=True,
+                    key='analyze'
                 ):
 
                     with st.spinner(
@@ -1282,7 +1564,7 @@ else:
                                     <div class="section-title"
                                          style="
                                             font-size:25px;
-                                            margin-top:25px;
+                                            margin-top:28px;
                                          ">
                                         {t['detected']}
                                     </div>
@@ -1315,7 +1597,9 @@ else:
                                         t['text']
                                     ):
 
-                                        st.write(text)
+                                        st.write(
+                                            text
+                                        )
 
 
                                     results = check_people(
@@ -1326,7 +1610,7 @@ else:
 
                                     st.html(
                                         f"""
-                                        <div style="height:20px;"></div>
+                                        <div style="height:24px;"></div>
 
                                         <div class="kicker">
                                             MOSABB RESULT
@@ -1341,61 +1625,143 @@ else:
 
                                     for result in results:
 
+                                        # ==================
+                                        # DANGER
+                                        # ==================
+
                                         if result['matches']:
 
-                                            detail = ''
+                                            details = ''
 
 
                                             for allergy, matches in (
                                                 result['matches'].items()
                                             ):
 
-                                                detail += (
-                                                    f'<div style="'
-                                                    f'margin-top:10px;">'
-                                                    f'<strong>'
-                                                    f'{t["allergy_type"]}: '
-                                                    f'{allergy}'
-                                                    f'</strong><br>'
-                                                    f'{t["found"]}: '
-                                                    f'{", ".join(matches)}'
-                                                    f'</div>'
+                                                details += f"""
+                                                <div class="result-detail">
+
+                                                    <div style="
+                                                        color:#A7B0B7;
+                                                        font-size:13px;
+                                                        margin-bottom:5px;
+                                                    ">
+                                                        {t['allergy_type']}
+                                                    </div>
+
+                                                    <div style="
+                                                        font-size:18px;
+                                                        font-weight:900;
+                                                        margin-bottom:10px;
+                                                    ">
+                                                        {allergy}
+                                                    </div>
+
+                                                    <div style="
+                                                        color:#FF9A9A;
+                                                        font-size:14px;
+                                                    ">
+                                                        {t['found']}:
+                                                        <strong>
+                                                            {', '.join(matches)}
+                                                        </strong>
+                                                    </div>
+
+                                                </div>
+                                                """
+
+
+                                            if result['is_owner']:
+
+                                                title = (
+                                                    f"{t['danger_title']} "
+                                                    f"{result['name']} ⚠️"
                                                 )
+
+                                                description = t[
+                                                    'danger_text'
+                                                ]
+
+
+                                            else:
+
+                                                title = (
+                                                    f"{t['family_danger_title']} "
+                                                    f"{result['name']} ⚠️"
+                                                )
+
+                                                description = t[
+                                                    'family_danger_text'
+                                                ]
 
 
                                             st.html(
                                                 f"""
-                                                <div class="result-danger">
+                                                <div class="danger-result">
 
-                                                    <div style="
-                                                        font-size:21px;
-                                                        font-weight:950;
-                                                        color:#FF8585;
-                                                    ">
-                                                        ⚠️ {t['danger']}
-                                                        {result['name']}
+                                                    <div class="result-status-danger">
+                                                        ALLERGY ALERT
                                                     </div>
 
-                                                    {detail}
+                                                    <div class="result-title">
+                                                        {title}
+                                                    </div>
+
+                                                    <div class="result-text">
+                                                        {description}
+                                                    </div>
+
+                                                    {details}
 
                                                 </div>
                                                 """
                                             )
 
 
+                                        # ==================
+                                        # SAFE
+                                        # ==================
+
                                         else:
+
+                                            if result['is_owner']:
+
+                                                title = (
+                                                    f"{t['safe_title']} "
+                                                    f"{result['name']} ✨"
+                                                )
+
+                                                description = t[
+                                                    'safe_text'
+                                                ]
+
+
+                                            else:
+
+                                                title = (
+                                                    f"{result['name']} "
+                                                    f"{t['family_safe_title']} ✨"
+                                                )
+
+                                                description = t[
+                                                    'family_safe_text'
+                                                ]
+
 
                                             st.html(
                                                 f"""
-                                                <div class="result-safe">
+                                                <div class="safe-result">
 
-                                                    <div style="
-                                                        font-size:19px;
-                                                        font-weight:900;
-                                                        color:#67F3B2;
-                                                    ">
-                                                        ✓ {t['safe']}
-                                                        {result['name']}
+                                                    <div class="result-status-safe">
+                                                        LOOKING GOOD
+                                                    </div>
+
+                                                    <div class="result-title">
+                                                        {title}
+                                                    </div>
+
+                                                    <div class="result-text">
+                                                        {description}
                                                     </div>
 
                                                 </div>
@@ -1427,7 +1793,7 @@ else:
 
         st.html(
             f"""
-            <div style="height:20px;"></div>
+            <div style="height:22px;"></div>
 
             <div class="kicker">
                 PERSONAL SAFETY PROFILE
@@ -1452,13 +1818,15 @@ else:
         selected = st.multiselect(
             t['my_allergies'],
             ALLERGIES,
-            default=current
+            default=current,
+            key='my_allergy_select'
         )
 
 
         if st.button(
             t['save'],
-            use_container_width=True
+            use_container_width=True,
+            key='save_allergies'
         ):
 
             save_user_allergies(
@@ -1466,9 +1834,11 @@ else:
                 selected
             )
 
+
             st.success(
                 t['saved'] + ' ✓'
             )
+
 
             st.rerun()
 
@@ -1507,7 +1877,9 @@ else:
                 family
             ):
 
-                with columns[index % 2]:
+                with columns[
+                    index % 2
+                ]:
 
                     with st.container(
                         border=True
@@ -1520,8 +1892,8 @@ else:
                             </div>
 
                             <div style="
-                                color:#8A98A3;
-                                margin:5px 0 10px;
+                                color:#8C99A4;
+                                margin:5px 0 11px;
                             ">
                                 {member['relation']}
                             </div>
@@ -1530,9 +1902,11 @@ else:
 
 
                         pills = ''.join(
-                            f'<span class="pill">'
-                            f'{allergy}'
-                            f'</span>'
+                            f"""
+                            <span class="pill">
+                                {allergy}
+                            </span>
+                            """
                             for allergy
                             in member['allergies']
                         )
@@ -1559,6 +1933,7 @@ else:
                             delete_family_member(
                                 member['id']
                             )
+
 
                             st.rerun()
 
@@ -1595,17 +1970,20 @@ else:
         )
 
 
-        col1, col2 = st.columns(2)
+        first_col, second_col = st.columns(
+            2
+        )
 
 
-        with col1:
+        with first_col:
 
             member_name = st.text_input(
-                t['member_name']
+                t['member_name'],
+                key='member_name'
             )
 
 
-        with col2:
+        with second_col:
 
             relation = st.selectbox(
                 t['relation'],
@@ -1617,7 +1995,8 @@ else:
                     t['brother'],
                     t['sister'],
                     t['other']
-                ]
+                ],
+                key='relation'
             )
 
 
@@ -1630,7 +2009,8 @@ else:
 
         if st.button(
             '＋ ' + t['add'],
-            use_container_width=True
+            use_container_width=True,
+            key='add_member'
         ):
 
             if not member_name:
@@ -1656,8 +2036,10 @@ else:
                     member_allergies
                 )
 
+
                 st.success(
                     '✓'
                 )
+
 
                 st.rerun()
