@@ -67,16 +67,18 @@ translations = {
 
         'step1': 'صوّر',
         'step2': 'نفحصلك',
-        'step3': 'تطمّن',
+        'step3': 'تتطمن',
 
         'login': 'تسجيل الدخول',
         'register': 'إنشاء حساب',
 
         'login_title': 'مرحباً بعودتك 👋',
-        'login_desc': 'سجل دخولك وكمل فحص منتجاتك.',
+        'login_desc':
+            'سجل دخولك وكمل فحص منتجاتك.',
 
         'register_title': 'ابدأ مع مسبب',
-        'register_desc': 'أنشئ حسابك وسجل حساسيتك مرة وحدة.',
+        'register_desc':
+            'أنشئ حسابك وسجل حساسيتك مرة وحدة.',
 
         'name': 'الاسم',
         'email': 'البريد الإلكتروني',
@@ -86,30 +88,31 @@ translations = {
         'create': 'إنشاء الحساب',
         'logout': 'تسجيل الخروج',
 
+        'hello': 'ياهلا',
+        'today': 'وش حاب تفحص اليوم؟',
+
         'scan_nav': '📷 افحص',
         'profile_nav': '👤 ملفي',
         'family_nav': '👨‍👩‍👧 عائلتي',
-
-        'hello': 'ياهلا',
-        'today': 'وش حاب تفحص اليوم؟',
 
         'scan_title': 'صوّر المنتج وخله علينا',
         'scan_desc':
             'صوّر قائمة المكونات أو ارفع صورة واضحة، '
             'ومسبب يقارنها بالحساسيات المسجلة.',
 
-        'check_for': 'راح نفحص هذا المنتج لـ:',
+        'check_for':
+            'راح نفحص هذا المنتج لـ:',
 
         'camera': 'صوّر المكونات',
         'upload': 'أو ارفع صورة',
-
         'analyze': 'افحص المنتج',
 
         'original': 'الصورة الأصلية',
         'detected': 'قائمة المكونات اللي اكتشفناها',
         'ocr_text': 'النص اللي قرأه مسبب',
 
-        'processing': 'ثواني... مسبب قاعد يفحص المكونات 🔍',
+        'processing':
+            'ثواني... مسبب قاعد يفحص المكونات 🔍',
 
         'no_label':
             'ما قدرنا نحدد قائمة المكونات. جرّب صورة أوضح وأقرب.',
@@ -131,7 +134,9 @@ translations = {
         'family_safe_text':
             'ما لقينا أي شيء مرتبط بحساسيته المسجلة.',
 
-        'family_danger_title': 'هذا المنتج مو مناسب لـ',
+        'family_danger_title':
+            'هذا المنتج مو مناسب لـ',
+
         'family_danger_text':
             'لقينا مكونات مرتبطة بحساسيته المسجلة.',
 
@@ -140,15 +145,22 @@ translations = {
 
         'profile_title': 'ملفي',
         'profile_subtitle':
-            'هنا بيانات حساسيتك أنت. مسبب يستخدمها تلقائياً في كل فحص.',
-
-        'my_allergies': 'وش عندك حساسية منه؟',
-        'save': 'حفظ الحساسية',
-        'saved': 'تم حفظ حساسيتك',
+            'هنا بياناتك وحساسيتك أنت، ومسبب يستخدمها تلقائياً في كل فحص.',
 
         'account_info': 'بيانات الحساب',
 
-        'family_title': 'عائلتي',
+        'my_allergies':
+            'وش عندك حساسية منه؟',
+
+        'save':
+            'حفظ الحساسية',
+
+        'saved':
+            'تم حفظ حساسيتك',
+
+        'family_title':
+            'عائلتي',
+
         'family_subtitle':
             'أضف أفراد عائلتك وحساسية كل شخص، '
             'وبعدها نفس المنتج ينفحص للجميع.',
@@ -156,13 +168,23 @@ translations = {
         'no_family':
             'ما أضفت أحد للحين. تقدر تستخدم مسبب لنفسك عادي.',
 
-        'add_member': 'إضافة فرد للعائلة',
-        'member_name': 'اسم الشخص',
-        'relation': 'صلة القرابة',
-        'member_allergies': 'وش عنده حساسية منه؟',
+        'add_member':
+            'إضافة فرد للعائلة',
 
-        'add': 'إضافة',
-        'delete': 'حذف',
+        'member_name':
+            'اسم الشخص',
+
+        'relation':
+            'صلة القرابة',
+
+        'member_allergies':
+            'وش عنده حساسية منه؟',
+
+        'add':
+            'إضافة',
+
+        'delete':
+            'حذف',
 
         'son': 'ابن',
         'daughter': 'ابنة',
@@ -173,14 +195,25 @@ translations = {
         'other': 'أخرى',
 
         'need_allergy':
-            'قبل الفحص، سجل حساسيتك من صفحة ملفي.',
+            'سجل حساسيتك أول من صفحة ملفي عشان مسبب يعرف وش يبحث عنه.',
 
-        'fill': 'عب البيانات كلها أول.',
-        'wrong': 'الإيميل أو كلمة المرور مو صحيحة.',
-        'used': 'هذا البريد مسجل من قبل.',
-        'created': 'تم إنشاء الحساب، تقدر تسجل دخولك الحين.',
-        'choose': 'اختر حساسية واحدة على الأقل.',
-        'enter_name': 'اكتب اسم الشخص أول.',
+        'fill':
+            'عب البيانات كلها أول.',
+
+        'wrong':
+            'الإيميل أو كلمة المرور مو صحيحة.',
+
+        'used':
+            'هذا البريد مسجل من قبل.',
+
+        'created':
+            'تم إنشاء الحساب، تقدر تسجل دخولك الحين.',
+
+        'choose':
+            'اختر حساسية واحدة على الأقل.',
+
+        'enter_name':
+            'اكتب اسم الشخص أول.',
 
         'disclaimer':
             'مسبب أداة مساعدة، والنتيجة تعتمد على جودة الصورة ودقة قراءة المكونات. '
@@ -213,10 +246,12 @@ translations = {
         'register': 'Create account',
 
         'login_title': 'Welcome back 👋',
-        'login_desc': 'Sign in and continue checking products.',
+        'login_desc':
+            'Sign in and continue checking products.',
 
         'register_title': 'Start with mosabb',
-        'register_desc': 'Create an account and save your allergies once.',
+        'register_desc':
+            'Create an account and save your allergies once.',
 
         'name': 'Name',
         'email': 'Email',
@@ -226,30 +261,31 @@ translations = {
         'create': 'Create account',
         'logout': 'Log out',
 
+        'hello': 'Hey',
+        'today': 'What are we checking today?',
+
         'scan_nav': '📷 Scan',
         'profile_nav': '👤 My Profile',
         'family_nav': '👨‍👩‍👧 My Family',
-
-        'hello': 'Hey',
-        'today': 'What are we checking today?',
 
         'scan_title': 'Take a photo. We’ll handle the rest.',
         'scan_desc':
             'Capture the ingredient label or upload a clear image. '
             'mosabb compares it with your saved allergy profiles.',
 
-        'check_for': 'We’ll check this product for:',
+        'check_for':
+            'We’ll check this product for:',
 
         'camera': 'Take a photo',
         'upload': 'Or upload an image',
-
         'analyze': 'Check Product',
 
         'original': 'Original image',
         'detected': 'Ingredient label detected',
         'ocr_text': 'What mosabb read',
 
-        'processing': 'One moment... mosabb is checking the ingredients 🔍',
+        'processing':
+            'One moment... mosabb is checking the ingredients 🔍',
 
         'no_label':
             'We could not detect the ingredient label. Try a clearer photo.',
@@ -286,13 +322,21 @@ translations = {
             'Your personal allergy information lives here. '
             'mosabb automatically uses it in every scan.',
 
-        'my_allergies': 'What are you allergic to?',
-        'save': 'Save allergies',
-        'saved': 'Your allergies have been saved',
+        'account_info':
+            'Account information',
 
-        'account_info': 'Account information',
+        'my_allergies':
+            'What are you allergic to?',
 
-        'family_title': 'My Family',
+        'save':
+            'Save allergies',
+
+        'saved':
+            'Your allergies have been saved',
+
+        'family_title':
+            'My Family',
+
         'family_subtitle':
             'Add family members and their allergies, '
             'then check the same product for everyone.',
@@ -300,13 +344,23 @@ translations = {
         'no_family':
             'No family members yet. You can still use mosabb for yourself.',
 
-        'add_member': 'Add family member',
-        'member_name': 'Name',
-        'relation': 'Relation',
-        'member_allergies': 'What are they allergic to?',
+        'add_member':
+            'Add family member',
 
-        'add': 'Add',
-        'delete': 'Delete',
+        'member_name':
+            'Name',
+
+        'relation':
+            'Relation',
+
+        'member_allergies':
+            'What are they allergic to?',
+
+        'add':
+            'Add',
+
+        'delete':
+            'Delete',
 
         'son': 'Son',
         'daughter': 'Daughter',
@@ -319,12 +373,23 @@ translations = {
         'need_allergy':
             'Save your allergies in My Profile before scanning.',
 
-        'fill': 'Please fill in all fields.',
-        'wrong': 'Incorrect email or password.',
-        'used': 'This email is already registered.',
-        'created': 'Account created. You can log in now.',
-        'choose': 'Select at least one allergy.',
-        'enter_name': 'Enter the person’s name first.',
+        'fill':
+            'Please fill in all fields.',
+
+        'wrong':
+            'Incorrect email or password.',
+
+        'used':
+            'This email is already registered.',
+
+        'created':
+            'Account created. You can log in now.',
+
+        'choose':
+            'Select at least one allergy.',
+
+        'enter_name':
+            'Enter the person’s name first.',
 
         'disclaimer':
             'mosabb is an assistive tool. Results depend on image quality '
@@ -348,10 +413,8 @@ css = """
 :root {
     --green: #35F29E;
     --cyan: #55D8FF;
-    --card: rgba(15,22,28,.84);
     --border: rgba(255,255,255,.075);
     --muted: #909DA7;
-    --red: #FF6D6D;
 }
 
 .stApp {
@@ -442,7 +505,7 @@ header {
 }
 
 
-/* FEATURE */
+/* FEATURE CARD */
 
 .feature-card {
     padding: 30px;
@@ -501,7 +564,7 @@ header {
 }
 
 
-/* THREE CARDS */
+/* HOME 3 STEPS */
 
 .step-card {
     min-height: 145px;
@@ -542,11 +605,11 @@ header {
 }
 
 
-/* PAGE */
+/* PAGE HEADER */
 
 .page-head {
-    margin-top: 28px;
-    margin-bottom: 28px;
+    margin-top: 30px;
+    margin-bottom: 27px;
 }
 
 .page-title {
@@ -564,7 +627,7 @@ header {
 }
 
 
-/* USER HEADER */
+/* USER CARD */
 
 .user-card {
     padding: 18px 21px;
@@ -594,53 +657,126 @@ header {
 }
 
 
-/* NAVIGATION */
+/* =====================================================
+   NAVIGATION — ALL 3 EXACTLY SAME SIZE
+===================================================== */
 
 div[role="radiogroup"] {
-    display: flex;
-    gap: 12px;
-    width: 100%;
+    display: grid !important;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr)) !important;
+
+    gap: 14px !important;
+
+    width: 100% !important;
+
+    margin-top: 18px !important;
 }
 
 div[role="radiogroup"] label {
-    flex: 1;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
 
-    padding: 14px 18px !important;
+    height: 118px !important;
 
-    border-radius: 17px !important;
+    box-sizing: border-box !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    margin: 0 !important;
+
+    padding: 16px 12px !important;
+
+    border-radius: 23px !important;
 
     background:
-        rgba(255,255,255,.025);
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.035),
+            rgba(255,255,255,.012)
+        ) !important;
 
     border:
-        1px solid rgba(255,255,255,.07);
+        1px solid rgba(255,255,255,.08) !important;
 
     transition:
-        all .2s ease;
+        all .2s ease !important;
+}
+
+div[role="radiogroup"] label > div {
+    width: 100% !important;
+    height: 100% !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    text-align: center !important;
+
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+div[role="radiogroup"] label p {
+    width: 100% !important;
+
+    margin: 0 !important;
+
+    padding: 0 !important;
+
+    font-size: 20px !important;
+
+    line-height: 1.3 !important;
+
+    font-weight: 900 !important;
+
+    text-align: center !important;
+
+    white-space: normal !important;
 }
 
 div[role="radiogroup"] label:hover {
+    transform:
+        translateY(-2px);
+
     border-color:
-        rgba(53,242,158,.30);
+        rgba(53,242,158,.30) !important;
 
     background:
-        rgba(53,242,158,.04);
+        rgba(53,242,158,.035) !important;
 }
 
 div[role="radiogroup"] label:has(input:checked) {
     background:
+        radial-gradient(
+            circle at 50% 15%,
+            rgba(53,242,158,.15),
+            transparent 75%
+        ),
         linear-gradient(
             145deg,
-            rgba(53,242,158,.13),
-            rgba(53,242,158,.045)
-        );
+            rgba(53,242,158,.11),
+            rgba(53,242,158,.035)
+        ) !important;
 
     border-color:
-        rgba(53,242,158,.34);
+        rgba(53,242,158,.40) !important;
+
+    box-shadow:
+        0 15px 45px rgba(0,0,0,.19) !important;
+}
+
+div[role="radiogroup"] input {
+    display: none !important;
 }
 
 
-/* CONTENT CARDS */
+/* CONTENT CARD */
 
 .content-card {
     padding: 27px;
@@ -718,7 +854,7 @@ div[role="radiogroup"] label:has(input:checked) {
 }
 
 
-/* PILL */
+/* PILLS */
 
 .pill {
     display: inline-block;
@@ -834,7 +970,7 @@ div[role="radiogroup"] label:has(input:checked) {
 }
 
 
-/* BUTTONS */
+/* BUTTON */
 
 .stButton > button {
     min-height: 49px;
@@ -866,7 +1002,7 @@ div[role="radiogroup"] label:has(input:checked) {
 }
 
 
-/* INPUTS */
+/* INPUT */
 
 .stTextInput input {
     background:
@@ -911,7 +1047,7 @@ div[role="radiogroup"] label:has(input:checked) {
 }
 
 
-/* TABS */
+/* LOGIN TABS */
 
 .stTabs [data-baseweb="tab-list"] {
     gap: 8px;
@@ -965,6 +1101,25 @@ div[role="radiogroup"] label:has(input:checked) {
     .result-title {
         font-size: 25px;
     }
+
+    div[role="radiogroup"] {
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr)) !important;
+
+        gap: 7px !important;
+    }
+
+    div[role="radiogroup"] label {
+        height: 92px !important;
+
+        padding:
+            10px 5px !important;
+    }
+
+    div[role="radiogroup"] label p {
+        font-size:
+            15px !important;
+    }
 }
 
 </style>
@@ -976,7 +1131,9 @@ css = css.replace(
     t['dir']
 )
 
-st.html(css)
+st.html(
+    css
+)
 
 
 # =========================================================
@@ -1398,10 +1555,6 @@ if st.session_state.user is None:
     )
 
 
-    # =====================================================
-    # LEFT
-    # =====================================================
-
     with info_col:
 
         st.html(
@@ -1705,27 +1858,22 @@ else:
     # NAVIGATION
     # =====================================================
 
-    if st.session_state.language == 'AR':
-
-        options = [
-            '📷 افحص',
-            '👤 ملفي',
-            '👨‍👩‍👧 عائلتي'
-        ]
-
-    else:
-
-        options = [
-            '📷 Scan',
-            '👤 My Profile',
-            '👨‍👩‍👧 My Family'
-        ]
+    options = [
+        t['scan_nav'],
+        t['profile_nav'],
+        t['family_nav']
+    ]
 
 
     current_map = {
-        'scan': options[0],
-        'profile': options[1],
-        'family': options[2]
+        'scan':
+            options[0],
+
+        'profile':
+            options[1],
+
+        'family':
+            options[2]
     }
 
 
@@ -1859,8 +2007,7 @@ else:
             ):
 
                 with people_cols[
-                    index
-                    % number_of_columns
+                    index % number_of_columns
                 ]:
 
                     allergy_text = ', '.join(
@@ -2033,7 +2180,7 @@ else:
                                     for result in results:
 
                                         # =================
-                                        # ALLERGY DETECTED
+                                        # DANGER
                                         # =================
 
                                         if result['matches']:
@@ -2131,7 +2278,7 @@ else:
 
 
                                         # =================
-                                        # NO MATCH
+                                        # SAFE
                                         # =================
 
                                         else:
@@ -2152,10 +2299,23 @@ else:
 
                                             else:
 
-                                                title = (
-                                                    f"{result['name']}، "
-                                                    f"{t['family_safe_title']} ✨"
-                                                )
+                                                if (
+                                                    st.session_state.language
+                                                    == 'AR'
+                                                ):
+
+                                                    title = (
+                                                        f"{result['name']}، "
+                                                        f"{t['family_safe_title']} ✨"
+                                                    )
+
+                                                else:
+
+                                                    title = (
+                                                        f"{result['name']}: "
+                                                        f"{t['family_safe_title']} ✨"
+                                                    )
+
 
                                                 description = (
                                                     t[
@@ -2202,7 +2362,7 @@ else:
 
 
     # =====================================================
-    # MY PROFILE PAGE
+    # PROFILE PAGE
     # =====================================================
 
     elif st.session_state.page == 'profile':
@@ -2251,32 +2411,6 @@ else:
 
         current = get_user_allergies(
             user['id']
-        )
-
-
-        st.html(
-            """
-            <div style="
-                height:8px;
-            ">
-            </div>
-
-            <div class="card-title">
-                حساسيتي
-            </div>
-            """
-            if st.session_state.language == 'AR'
-            else
-            """
-            <div style="
-                height:8px;
-            ">
-            </div>
-
-            <div class="card-title">
-                My allergies
-            </div>
-            """
         )
 
 
@@ -2430,15 +2564,6 @@ else:
 
                 <div class="card-title">
                     ＋ {t['add_member']}
-                </div>
-
-                <div class="card-desc">
-                    {
-                        'سجل الشخص وحساسيته، وبعدها يظهر تلقائياً في كل عملية فحص.'
-                        if st.session_state.language == 'AR'
-                        else
-                        'Save their allergies and mosabb will automatically include them in every scan.'
-                    }
                 </div>
 
             </div>
