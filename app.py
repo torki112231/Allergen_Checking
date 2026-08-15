@@ -1,4 +1,9 @@
 import streamlit as st
+import numpy as np
+from PIL import Image
+from ultralytics import YOLO
+import easyocr
+from rapidfuzz import fuzz
 
 from database import (
     create_tables,
@@ -22,9 +27,208 @@ if 'user' not in st.session_state:
     st.session_state.user = None
 
 
+ALLERGEN_KEYWORDS = {
+    'Milk / Dairy': [
+        'milk',
+        'dairy',
+        'whey',
+        'casein',
+        'caseinate',
+        'lactose',
+        'cream',
+        'butter',
+        'cheese',
+        'yogurt',
+        'حليب',
+        'لبن',
+        'مصل الحليب',
+        'كازين',
+        'لاكتوز',
+        'زبدة',
+        'جبن',
+        'قشطة'
+    ],
+
+    'Peanuts': [
+        'peanut',
+        'peanuts',
+        'groundnut',
+        'فول سوداني',
+        'فول السوداني'
+    ],
+
+    'Sesame': [
+        'sesame',
+        'tahini',
+        'sesame seed',
+        'سمسم',
+        'طحينة'
+    ],
+
+    'Eggs': [
+        'egg',
+        'eggs',
+        'albumin',
+        'ovalbumin',
+        'بيض',
+        'البيض'
+    ],
+
+    'Tree Nuts': [
+        'almond',
+        'walnut',
+        'cashew',
+        'pistachio',
+        'hazelnut',
+        'pecan',
+        'macadamia',
+        'لوز',
+        'جوز',
+        'كاجو',
+        'فستق',
+        'بندق'
+    ]
+}
+
+
+@st.cache_resource
+def load_model():
+    return YOLO('models/ingredient_label_model.pt')
+
+
+@st.cache_resource
+def load_ocr():
+    return easyocr.Reader(
+        ['ar', 'en'],
+        gpu=False
+    )
+
+
+def extract_ingredient_region(image, model):
+    image_array = np.array(image)
+
+    results = model(
+        image_array,
+        conf=0.25,
+        verbose=False
+    )
+
+    boxes = results[0].boxes
+
+    if boxes is None or len(boxes) == 0:
+        return None
+
+    best_box = None
+    best_confidence = 0
+
+    for box in boxes:
+
+        confidence = float(
+            box.conf[0]
+        )
+
+        if confidence > best_confidence:
+
+            best_confidence = confidence
+            best_box = box
+
+    x1, y1, x2, y2 = best_box.xyxy[0].cpu().numpy()
+
+    x1 = max(int(x1), 0)
+    y1 = max(int(y1), 0)
+    x2 = min(int(x2), image.width)
+    y2 = min(int(y2), image.height)
+
+    cropped = image.crop(
+        (x1, y1, x2, y2)
+    )
+
+    return cropped
+
+
+def run_ocr(image, reader):
+    image_array = np.array(image)
+
+    results = reader.readtext(
+        image_array,
+        detail=0,
+        paragraph=True
+    )
+
+    text = ' '.join(results)
+
+    return text
+
+
+def find_allergen_matches(text, allergy):
+    text_lower = text.lower()
+
+    found = []
+
+    keywords = ALLERGEN_KEYWORDS.get(
+        allergy,
+        []
+    )
+
+    for keyword in keywords:
+
+        keyword_lower = keyword.lower()
+
+        if keyword_lower in text_lower:
+
+            found.append(keyword)
+
+        else:
+
+            words = text_lower.split()
+
+            for word in words:
+
+                score = fuzz.ratio(
+                    word,
+                    keyword_lower
+                )
+
+                if score >= 85:
+
+                    found.append(keyword)
+                    break
+
+    return list(set(found))
+
+
+def check_family(text, family):
+    results = []
+
+    for member in family:
+
+        member_matches = {}
+
+        for allergy in member['allergies']:
+
+            matches = find_allergen_matches(
+                text,
+                allergy
+            )
+
+            if matches:
+
+                member_matches[allergy] = matches
+
+        results.append({
+            'name': member['name'],
+            'relation': member['relation'],
+            'matches': member_matches
+        })
+
+    return results
+
+
 st.title('mosabb | مسبب')
 
-st.caption('اعرف إذا المنتج مناسب لك ولعائلتك قبل ما تستخدمه.')
+st.caption(
+    'افحص المنتج واعرف إذا كان مناسب لك ولعائلتك'
+)
 
 
 if st.session_state.user is None:
@@ -54,7 +258,10 @@ if st.session_state.user is None:
             use_container_width=True
         ):
 
-            user = login_user(email, password)
+            user = login_user(
+                email,
+                password
+            )
 
             if user:
 
@@ -63,8 +270,6 @@ if st.session_state.user is None:
                     'name': user[1],
                     'email': user[2]
                 }
-
-                st.success('تم تسجيل الدخول')
 
                 st.rerun()
 
@@ -77,7 +282,9 @@ if st.session_state.user is None:
 
     with register_tab:
 
-        st.subheader('إنشاء حساب عائلة')
+        st.subheader(
+            'إنشاء حساب عائلة'
+        )
 
         name = st.text_input(
             'اسمك',
@@ -102,7 +309,9 @@ if st.session_state.user is None:
 
             if not name or not email or not password:
 
-                st.warning('عب البيانات كلها')
+                st.warning(
+                    'عب البيانات كلها'
+                )
 
             else:
 
@@ -115,13 +324,13 @@ if st.session_state.user is None:
                 if success:
 
                     st.success(
-                        'تم إنشاء الحساب. الحين سجل دخولك.'
+                        'تم إنشاء الحساب، سجل دخولك الآن'
                     )
 
                 else:
 
                     st.error(
-                        'هذا البريد الإلكتروني مسجل من قبل'
+                        'الإيميل مستخدم من قبل'
                     )
 
 
@@ -133,14 +342,13 @@ else:
         f'أهلاً {user["name"]} 👋'
     )
 
-    if st.button('تسجيل الخروج'):
+    if st.button(
+        'تسجيل الخروج'
+    ):
 
         st.session_state.user = None
-
         st.rerun()
 
-
-    st.divider()
 
     scan_tab, family_tab = st.tabs([
         '📷 فحص منتج',
@@ -150,26 +358,178 @@ else:
 
     with scan_tab:
 
-        st.header('فحص منتج')
-
-        st.info(
-            'قريباً: صور المنتج وmosabb بيقارنه '
-            'بحساسيات كل أفراد العائلة.'
+        st.header(
+            'فحص منتج'
         )
 
-        picture = st.camera_input(
-            'صور مكونات المنتج'
+        family = get_family_members(
+            user['id']
         )
 
-        uploaded_file = st.file_uploader(
-            'أو ارفع صورة',
-            type=['jpg', 'jpeg', 'png']
-        )
+        if not family:
+
+            st.warning(
+                'أضف أفراد العائلة وحساسياتهم أول'
+            )
+
+        else:
+
+            camera_image = st.camera_input(
+                'صور مكونات المنتج'
+            )
+
+            uploaded_file = st.file_uploader(
+                'أو ارفع صورة',
+                type=[
+                    'jpg',
+                    'jpeg',
+                    'png'
+                ]
+            )
+
+            image_source = None
+
+            if camera_image:
+
+                image_source = camera_image
+
+            elif uploaded_file:
+
+                image_source = uploaded_file
+
+
+            if image_source:
+
+                image = Image.open(
+                    image_source
+                ).convert('RGB')
+
+                st.image(
+                    image,
+                    caption='الصورة الأصلية',
+                    use_container_width=True
+                )
+
+                if st.button(
+                    '🔍 تحليل المنتج',
+                    use_container_width=True
+                ):
+
+                    with st.spinner(
+                        'mosabb يحلل المكونات...'
+                    ):
+
+                        try:
+
+                            model = load_model()
+                            reader = load_ocr()
+
+                            cropped = extract_ingredient_region(
+                                image,
+                                model
+                            )
+
+                            if cropped is None:
+
+                                st.error(
+                                    'ما قدرت أحدد قائمة المكونات. حاول تصورها بشكل أوضح.'
+                                )
+
+                            else:
+
+                                st.subheader(
+                                    'منطقة المكونات المكتشفة'
+                                )
+
+                                st.image(
+                                    cropped,
+                                    use_container_width=True
+                                )
+
+                                text = run_ocr(
+                                    cropped,
+                                    reader
+                                )
+
+                                if not text.strip():
+
+                                    st.error(
+                                        'تم تحديد المكونات لكن ما قدرت أقرأ النص.'
+                                    )
+
+                                else:
+
+                                    st.subheader(
+                                        'النص المقروء'
+                                    )
+
+                                    st.write(
+                                        text
+                                    )
+
+                                    results = check_family(
+                                        text,
+                                        family
+                                    )
+
+                                    st.divider()
+
+                                    st.header(
+                                        'نتيجة mosabb'
+                                    )
+
+                                    any_warning = False
+
+                                    for result in results:
+
+                                        if result['matches']:
+
+                                            any_warning = True
+
+                                            st.error(
+                                                f'🚨 المنتج قد لا يكون مناسباً لـ {result["name"]}'
+                                            )
+
+                                            for allergy, matches in result['matches'].items():
+
+                                                st.write(
+                                                    f'**الحساسية:** {allergy}'
+                                                )
+
+                                                st.write(
+                                                    'تم العثور على: '
+                                                    + ', '.join(matches)
+                                                )
+
+                                        else:
+
+                                            st.success(
+                                                f'✅ لم نجد مسببات الحساسية المسجلة لـ {result["name"]}'
+                                            )
+
+
+                                    if not any_warning:
+
+                                        st.success(
+                                            '✅ لم نجد أي مسبب حساسية مسجل لأفراد العائلة'
+                                        )
+
+                                    st.caption(
+                                        'النتيجة تعتمد على جودة الصورة ودقة قراءة النص، وليست بديلاً عن قراءة تحذيرات العبوة أو الاستشارة الطبية.'
+                                    )
+
+                        except Exception as error:
+
+                            st.error(
+                                f'صار خطأ أثناء التحليل: {error}'
+                            )
 
 
     with family_tab:
 
-        st.header('أفراد العائلة')
+        st.header(
+            'أفراد العائلة'
+        )
 
         family = get_family_members(
             user['id']
@@ -179,7 +539,9 @@ else:
 
             for member in family:
 
-                with st.container(border=True):
+                with st.container(
+                    border=True
+                ):
 
                     st.subheader(
                         member['name']
@@ -189,31 +551,25 @@ else:
                         f'الصفة: {member["relation"]}'
                     )
 
-                    if member['allergies']:
-
-                        st.write(
-                            'الحساسيات: '
-                            + ', '.join(
-                                member['allergies']
-                            )
+                    st.write(
+                        'الحساسيات: '
+                        + ', '.join(
+                            member['allergies']
                         )
-
-                    else:
-
-                        st.write(
-                            'لا توجد حساسيات مسجلة'
-                        )
+                    )
 
         else:
 
             st.info(
-                'ما أضفت أحد للعائلة للحين.'
+                'ما أضفت أحد للعائلة للحين'
             )
 
 
         st.divider()
 
-        st.subheader('إضافة فرد للعائلة')
+        st.subheader(
+            'إضافة فرد للعائلة'
+        )
 
         member_name = st.text_input(
             'الاسم'
