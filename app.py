@@ -38,6 +38,9 @@ if 'user' not in st.session_state:
 if 'language' not in st.session_state:
     st.session_state.language = 'AR'
 
+if 'page' not in st.session_state:
+    st.session_state.page = 'scan'
+
 
 # =========================================================
 # TRANSLATIONS
@@ -59,8 +62,8 @@ translations = {
             'فحص واحد، ونتيجة مخصصة لك ولعائلتك',
 
         'main_card_desc':
-            'مسبب ما يبحث عن مكونات بشكل عام فقط، '
-            'هو يقارن المنتج بالحساسيات المسجلة لكل شخص عندك.',
+            'مسبب يقارن مكونات المنتج بحساسية كل شخص مسجل عندك، '
+            'ويعطيك تنبيه واضح قبل الاستخدام.',
 
         'step1': 'صوّر',
         'step2': 'نفحصلك',
@@ -70,12 +73,10 @@ translations = {
         'register': 'إنشاء حساب',
 
         'login_title': 'مرحباً بعودتك 👋',
-        'login_desc':
-            'سجل دخولك وكمل فحص منتجاتك.',
+        'login_desc': 'سجل دخولك وكمل فحص منتجاتك.',
 
         'register_title': 'ابدأ مع مسبب',
-        'register_desc':
-            'أنشئ حسابك وسجل حساسيتك مرة وحدة.',
+        'register_desc': 'أنشئ حسابك وسجل حساسيتك مرة وحدة.',
 
         'name': 'الاسم',
         'email': 'البريد الإلكتروني',
@@ -85,29 +86,30 @@ translations = {
         'create': 'إنشاء الحساب',
         'logout': 'تسجيل الخروج',
 
-        'scan_tab': 'فحص منتج',
-        'profile_tab': 'ملفي وعائلتي',
+        'scan_nav': '📷 افحص',
+        'profile_nav': '👤 ملفي',
+        'family_nav': '👨‍👩‍👧 عائلتي',
 
-        'welcome': 'ياهلا',
+        'hello': 'ياهلا',
         'today': 'وش حاب تفحص اليوم؟',
 
         'scan_title': 'صوّر المنتج وخله علينا',
         'scan_desc':
-            'صوّر قائمة المكونات أو ارفع صورة واضحة، ومسبب يفحصها لك.',
+            'صوّر قائمة المكونات أو ارفع صورة واضحة، '
+            'ومسبب يقارنها بالحساسيات المسجلة.',
 
-        'check_for':
-            'هذا المنتج راح ينفحص لـ:',
+        'check_for': 'راح نفحص هذا المنتج لـ:',
 
         'camera': 'صوّر المكونات',
         'upload': 'أو ارفع صورة',
+
         'analyze': 'افحص المنتج',
 
         'original': 'الصورة الأصلية',
         'detected': 'قائمة المكونات اللي اكتشفناها',
-        'text': 'النص اللي قرأه مسبب',
+        'ocr_text': 'النص اللي قرأه مسبب',
 
-        'processing':
-            'ثواني... مسبب قاعد يفحص المكونات 🔍',
+        'processing': 'ثواني... مسبب قاعد يفحص المكونات 🔍',
 
         'no_label':
             'ما قدرنا نحدد قائمة المكونات. جرّب صورة أوضح وأقرب.',
@@ -127,102 +129,58 @@ translations = {
 
         'family_safe_title': 'أموره طيبة',
         'family_safe_text':
-            'ما لقينا أي مكوّن مرتبط بحساسيته المسجلة.',
+            'ما لقينا أي شيء مرتبط بحساسيته المسجلة.',
 
-        'family_danger_title':
-            'هذا المنتج مو مناسب لـ',
-
+        'family_danger_title': 'هذا المنتج مو مناسب لـ',
         'family_danger_text':
             'لقينا مكونات مرتبطة بحساسيته المسجلة.',
 
-        'allergy_type': 'الحساسية المسجلة',
+        'allergy_type': 'الحساسية',
         'found': 'المكونات اللي لقيناها',
 
-        'profile_title':
-            'عرف مسبب على حساسيتك',
+        'profile_title': 'ملفي',
+        'profile_subtitle':
+            'هنا بيانات حساسيتك أنت. مسبب يستخدمها تلقائياً في كل فحص.',
 
-        'profile_desc':
-            'اختر الأشياء اللي تتحسس منها، وبعدها كل منتج تفحصه '
-            'راح نقارنه فيها تلقائياً.',
+        'my_allergies': 'وش عندك حساسية منه؟',
+        'save': 'حفظ الحساسية',
+        'saved': 'تم حفظ حساسيتك',
 
-        'my_allergies':
-            'وش عندك حساسية منه؟',
+        'account_info': 'بيانات الحساب',
 
-        'save':
-            'حفظ الحساسية',
-
-        'saved':
-            'تم حفظ حساسيتك',
-
-        'family_title':
-            'أفراد العائلة',
-
-        'family_desc':
-            'أضف أفراد عائلتك وحساسياتهم، وبعدها نفس المنتج '
-            'ينفحص للجميع بنفس الوقت.',
+        'family_title': 'عائلتي',
+        'family_subtitle':
+            'أضف أفراد عائلتك وحساسية كل شخص، '
+            'وبعدها نفس المنتج ينفحص للجميع.',
 
         'no_family':
             'ما أضفت أحد للحين. تقدر تستخدم مسبب لنفسك عادي.',
 
-        'add_member':
-            'إضافة فرد للعائلة',
+        'add_member': 'إضافة فرد للعائلة',
+        'member_name': 'اسم الشخص',
+        'relation': 'صلة القرابة',
+        'member_allergies': 'وش عنده حساسية منه؟',
 
-        'member_name':
-            'اسم الشخص',
+        'add': 'إضافة',
+        'delete': 'حذف',
 
-        'relation':
-            'صلة القرابة',
-
-        'member_allergies':
-            'وش عنده حساسية منه؟',
-
-        'add':
-            'إضافة',
-
-        'delete':
-            'حذف',
-
-        'son':
-            'ابن',
-
-        'daughter':
-            'ابنة',
-
-        'mother':
-            'أم',
-
-        'father':
-            'أب',
-
-        'brother':
-            'أخ',
-
-        'sister':
-            'أخت',
-
-        'other':
-            'أخرى',
+        'son': 'ابن',
+        'daughter': 'ابنة',
+        'mother': 'أم',
+        'father': 'أب',
+        'brother': 'أخ',
+        'sister': 'أخت',
+        'other': 'أخرى',
 
         'need_allergy':
-            'سجل حساسيتك أول من ملفي وعائلتي عشان مسبب يعرف وش يبحث عنه.',
+            'قبل الفحص، سجل حساسيتك من صفحة ملفي.',
 
-        'fill':
-            'عب البيانات كلها أول.',
-
-        'wrong':
-            'الإيميل أو كلمة المرور مو صحيحة.',
-
-        'used':
-            'هذا البريد مسجل من قبل.',
-
-        'created':
-            'تم إنشاء الحساب، تقدر تسجل دخولك الحين.',
-
-        'choose':
-            'اختر حساسية واحدة على الأقل.',
-
-        'enter_name':
-            'اكتب اسم الشخص أول.',
+        'fill': 'عب البيانات كلها أول.',
+        'wrong': 'الإيميل أو كلمة المرور مو صحيحة.',
+        'used': 'هذا البريد مسجل من قبل.',
+        'created': 'تم إنشاء الحساب، تقدر تسجل دخولك الحين.',
+        'choose': 'اختر حساسية واحدة على الأقل.',
+        'enter_name': 'اكتب اسم الشخص أول.',
 
         'disclaimer':
             'مسبب أداة مساعدة، والنتيجة تعتمد على جودة الصورة ودقة قراءة المكونات. '
@@ -244,8 +202,8 @@ translations = {
             'One scan. Personalized for you and your family.',
 
         'main_card_desc':
-            'mosabb does more than read ingredients. '
-            'It checks the product against each saved allergy profile.',
+            'mosabb compares product ingredients with every saved allergy profile '
+            'and gives you a clear warning before use.',
 
         'step1': 'Capture',
         'step2': 'We check',
@@ -255,12 +213,10 @@ translations = {
         'register': 'Create account',
 
         'login_title': 'Welcome back 👋',
-        'login_desc':
-            'Sign in and continue checking products.',
+        'login_desc': 'Sign in and continue checking products.',
 
         'register_title': 'Start with mosabb',
-        'register_desc':
-            'Create your account and save your allergies once.',
+        'register_desc': 'Create an account and save your allergies once.',
 
         'name': 'Name',
         'email': 'Email',
@@ -270,47 +226,49 @@ translations = {
         'create': 'Create account',
         'logout': 'Log out',
 
-        'scan_tab': 'Scan Product',
-        'profile_tab': 'My Profile & Family',
+        'scan_nav': '📷 Scan',
+        'profile_nav': '👤 My Profile',
+        'family_nav': '👨‍👩‍👧 My Family',
 
-        'welcome': 'Hey',
+        'hello': 'Hey',
         'today': 'What are we checking today?',
 
         'scan_title': 'Take a photo. We’ll handle the rest.',
         'scan_desc':
-            'Capture the ingredient label or upload a clear image.',
+            'Capture the ingredient label or upload a clear image. '
+            'mosabb compares it with your saved allergy profiles.',
 
-        'check_for':
-            'This product will be checked for:',
+        'check_for': 'We’ll check this product for:',
 
         'camera': 'Take a photo',
         'upload': 'Or upload an image',
+
         'analyze': 'Check Product',
 
         'original': 'Original image',
         'detected': 'Ingredient label detected',
-        'text': 'What mosabb read',
+        'ocr_text': 'What mosabb read',
 
-        'processing':
-            'One moment... mosabb is checking the ingredients 🔍',
+        'processing': 'One moment... mosabb is checking the ingredients 🔍',
 
         'no_label':
-            'We could not detect the ingredient label. Try a clearer image.',
+            'We could not detect the ingredient label. Try a clearer photo.',
 
         'no_text':
             'We found the label, but the text was not clear enough to read.',
 
         'result': 'Scan Result',
 
-        'safe_title': 'Looking good',
+        'safe_title': 'You’re in the clear',
         'safe_text':
-            'We did not find anything linked to your saved allergies.',
+            'We did not find anything in the ingredients we read '
+            'that matches your saved allergies.',
 
         'danger_title': 'Heads up',
         'danger_text':
-            'We found ingredients linked to your saved allergies.',
+            'We found ingredients in this product that match your saved allergies.',
 
-        'family_safe_title': 'Looking good',
+        'family_safe_title': 'Looks clear',
         'family_safe_text':
             'We did not find anything linked to their saved allergies.',
 
@@ -320,92 +278,53 @@ translations = {
         'family_danger_text':
             'We found ingredients linked to their saved allergies.',
 
-        'allergy_type': 'Saved allergy',
+        'allergy_type': 'Allergy',
         'found': 'Ingredients found',
 
-        'profile_title':
-            'Tell mosabb what to look for',
+        'profile_title': 'My Profile',
+        'profile_subtitle':
+            'Your personal allergy information lives here. '
+            'mosabb automatically uses it in every scan.',
 
-        'profile_desc':
-            'Save your allergies once and every product will be checked automatically.',
+        'my_allergies': 'What are you allergic to?',
+        'save': 'Save allergies',
+        'saved': 'Your allergies have been saved',
 
-        'my_allergies':
-            'What are you allergic to?',
+        'account_info': 'Account information',
 
-        'save':
-            'Save allergies',
-
-        'saved':
-            'Your allergies have been saved',
-
-        'family_title':
-            'Family members',
-
-        'family_desc':
-            'Add your family and their allergies, then check the same product for everyone.',
+        'family_title': 'My Family',
+        'family_subtitle':
+            'Add family members and their allergies, '
+            'then check the same product for everyone.',
 
         'no_family':
             'No family members yet. You can still use mosabb for yourself.',
 
-        'add_member':
-            'Add family member',
+        'add_member': 'Add family member',
+        'member_name': 'Name',
+        'relation': 'Relation',
+        'member_allergies': 'What are they allergic to?',
 
-        'member_name':
-            'Name',
+        'add': 'Add',
+        'delete': 'Delete',
 
-        'relation':
-            'Relation',
-
-        'member_allergies':
-            'What are they allergic to?',
-
-        'add':
-            'Add',
-
-        'delete':
-            'Delete',
-
-        'son':
-            'Son',
-
-        'daughter':
-            'Daughter',
-
-        'mother':
-            'Mother',
-
-        'father':
-            'Father',
-
-        'brother':
-            'Brother',
-
-        'sister':
-            'Sister',
-
-        'other':
-            'Other',
+        'son': 'Son',
+        'daughter': 'Daughter',
+        'mother': 'Mother',
+        'father': 'Father',
+        'brother': 'Brother',
+        'sister': 'Sister',
+        'other': 'Other',
 
         'need_allergy':
-            'Save your allergies first so mosabb knows what to look for.',
+            'Save your allergies in My Profile before scanning.',
 
-        'fill':
-            'Please fill in all fields.',
-
-        'wrong':
-            'Incorrect email or password.',
-
-        'used':
-            'This email is already registered.',
-
-        'created':
-            'Account created. You can log in now.',
-
-        'choose':
-            'Select at least one allergy.',
-
-        'enter_name':
-            'Enter the person’s name first.',
+        'fill': 'Please fill in all fields.',
+        'wrong': 'Incorrect email or password.',
+        'used': 'This email is already registered.',
+        'created': 'Account created. You can log in now.',
+        'choose': 'Select at least one allergy.',
+        'enter_name': 'Enter the person’s name first.',
 
         'disclaimer':
             'mosabb is an assistive tool. Results depend on image quality '
@@ -429,11 +348,10 @@ css = """
 :root {
     --green: #35F29E;
     --cyan: #55D8FF;
-    --bg: #060B0F;
     --card: rgba(15,22,28,.84);
     --border: rgba(255,255,255,.075);
     --muted: #909DA7;
-    --danger: #FF6D6D;
+    --red: #FF6D6D;
 }
 
 .stApp {
@@ -441,12 +359,12 @@ css = """
 
     background:
         radial-gradient(
-            circle at 5% 8%,
+            circle at 5% 7%,
             rgba(53,242,158,.11),
-            transparent 28%
+            transparent 27%
         ),
         radial-gradient(
-            circle at 95% 4%,
+            circle at 95% 3%,
             rgba(67,116,255,.10),
             transparent 24%
         ),
@@ -491,24 +409,15 @@ header {
 /* HERO */
 
 .hero {
-    padding: 78px 0 58px 0;
+    padding: 75px 0 55px 0;
 }
 
 .hero-title {
-    font-size: clamp(
-        58px,
-        7.5vw,
-        96px
-    );
-
+    font-size: clamp(58px, 7.5vw, 96px);
     line-height: .96;
-
     letter-spacing: -5px;
-
     font-weight: 950;
-
     max-width: 950px;
-
     margin: 0;
 }
 
@@ -521,32 +430,22 @@ header {
         );
 
     -webkit-background-clip: text;
-
     -webkit-text-fill-color: transparent;
 }
 
 .hero-desc {
     margin-top: 28px;
-
     max-width: 760px;
-
     color: #9DA9B2;
-
     line-height: 1.85;
-
     font-size: 18px;
 }
 
 
-/* LARGE FEATURE CARD */
+/* FEATURE */
 
 .feature-card {
-    position: relative;
-
-    overflow: hidden;
-
     padding: 30px;
-
     border-radius: 26px;
 
     background:
@@ -564,23 +463,17 @@ header {
     border:
         1px solid rgba(53,242,158,.14);
 
-    box-shadow:
-        0 30px 95px rgba(0,0,0,.28);
-
     margin-bottom: 16px;
 }
 
 .feature-icon {
     width: 58px;
-
     height: 58px;
 
     border-radius: 18px;
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
     font-size: 29px;
@@ -595,27 +488,20 @@ header {
 }
 
 .feature-title {
-    font-size: 30px;
-
+    font-size: 29px;
     font-weight: 950;
-
-    line-height: 1.2;
-
-    letter-spacing: -.8px;
-
+    line-height: 1.25;
+    letter-spacing: -.7px;
     margin-bottom: 10px;
 }
 
 .feature-desc {
     color: var(--muted);
-
     line-height: 1.75;
-
-    max-width: 510px;
 }
 
 
-/* 3 STEPS */
+/* THREE CARDS */
 
 .step-card {
     min-height: 145px;
@@ -643,60 +529,169 @@ header {
 
     border:
         1px solid var(--border);
-
-    transition: all .2s ease;
-}
-
-.step-card:hover {
-    transform: translateY(-3px);
-
-    border-color:
-        rgba(53,242,158,.25);
-
-    box-shadow:
-        0 20px 50px rgba(0,0,0,.20);
 }
 
 .step-icon {
-    font-size: 30px;
-
+    font-size: 31px;
     margin-bottom: 11px;
 }
 
 .step-word {
     font-size: 23px;
-
     font-weight: 950;
 }
 
 
-/* SECTIONS */
+/* PAGE */
 
-.section-title {
-    font-size: 35px;
+.page-head {
+    margin-top: 28px;
+    margin-bottom: 28px;
+}
 
+.page-title {
+    font-size: 38px;
     font-weight: 950;
-
     letter-spacing: -1px;
-
-    margin-bottom: 8px;
+    margin-bottom: 7px;
 }
 
-.section-desc {
+.page-desc {
     color: var(--muted);
-
-    line-height: 1.7;
-
-    margin-bottom: 24px;
+    font-size: 16px;
+    line-height: 1.75;
+    max-width: 760px;
 }
 
 
-/* SOFT CARD */
+/* USER HEADER */
 
-.soft-card {
-    padding: 18px 20px;
+.user-card {
+    padding: 18px 21px;
 
-    border-radius: 18px;
+    border-radius: 19px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.035),
+            rgba(255,255,255,.015)
+        );
+
+    border:
+        1px solid var(--border);
+}
+
+.user-small {
+    font-size: 13px;
+    color: #8997A1;
+    margin-bottom: 3px;
+}
+
+.user-big {
+    font-size: 21px;
+    font-weight: 900;
+}
+
+
+/* NAVIGATION */
+
+div[role="radiogroup"] {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+}
+
+div[role="radiogroup"] label {
+    flex: 1;
+
+    padding: 14px 18px !important;
+
+    border-radius: 17px !important;
+
+    background:
+        rgba(255,255,255,.025);
+
+    border:
+        1px solid rgba(255,255,255,.07);
+
+    transition:
+        all .2s ease;
+}
+
+div[role="radiogroup"] label:hover {
+    border-color:
+        rgba(53,242,158,.30);
+
+    background:
+        rgba(53,242,158,.04);
+}
+
+div[role="radiogroup"] label:has(input:checked) {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(53,242,158,.13),
+            rgba(53,242,158,.045)
+        );
+
+    border-color:
+        rgba(53,242,158,.34);
+}
+
+
+/* CONTENT CARDS */
+
+.content-card {
+    padding: 27px;
+
+    border-radius: 24px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(17,25,31,.90),
+            rgba(10,16,21,.82)
+        );
+
+    border:
+        1px solid var(--border);
+
+    margin-bottom: 16px;
+}
+
+.card-title {
+    font-size: 23px;
+    font-weight: 900;
+    margin-bottom: 7px;
+}
+
+.card-desc {
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+
+/* PROFILE */
+
+.profile-name {
+    font-size: 33px;
+    font-weight: 950;
+    letter-spacing: -.7px;
+}
+
+.profile-email {
+    color: var(--muted);
+    margin-top: 5px;
+}
+
+
+/* PERSON */
+
+.person-card {
+    padding: 23px;
+
+    border-radius: 22px;
 
     background:
         rgba(255,255,255,.025);
@@ -704,25 +699,26 @@ header {
     border:
         1px solid var(--border);
 
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
 .person-name {
-    font-size: 18px;
+    font-size: 22px;
+    font-weight: 950;
+}
 
-    font-weight: 900;
+.person-relation {
+    color: #8996A0;
+    margin-top: 3px;
+    margin-bottom: 12px;
 }
 
 .person-allergy {
     color: #FF9898;
-
-    margin-top: 5px;
-
-    font-size: 14px;
 }
 
 
-/* PILLS */
+/* PILL */
 
 .pill {
     display: inline-block;
@@ -742,7 +738,6 @@ header {
     color: #FF9696;
 
     font-size: 13px;
-
     font-weight: 800;
 }
 
@@ -797,43 +792,30 @@ header {
 
 .result-status-safe {
     color: #64F4B1;
-
     font-size: 12px;
-
     font-weight: 950;
-
     letter-spacing: 1.5px;
-
     margin-bottom: 13px;
 }
 
 .result-status-danger {
     color: #FF8585;
-
     font-size: 12px;
-
     font-weight: 950;
-
     letter-spacing: 1.5px;
-
     margin-bottom: 13px;
 }
 
 .result-title {
     font-size: 32px;
-
     font-weight: 950;
-
     letter-spacing: -.8px;
-
     margin-bottom: 9px;
 }
 
 .result-text {
     color: #A4AFB7;
-
     font-size: 16px;
-
     line-height: 1.75;
 }
 
@@ -932,8 +914,7 @@ header {
 /* TABS */
 
 .stTabs [data-baseweb="tab-list"] {
-    gap:
-        8px;
+    gap: 8px;
 }
 
 .stTabs [data-baseweb="tab"] {
@@ -955,9 +936,9 @@ header {
         rgba(53,242,158,.08) !important;
 }
 
+
 [data-testid="stAlert"] {
-    border-radius:
-        16px;
+    border-radius: 16px;
 }
 
 
@@ -966,33 +947,23 @@ header {
 @media (max-width: 700px) {
 
     .hero {
-        padding-top:
-            40px;
+        padding-top: 40px;
     }
 
     .hero-title {
-        letter-spacing:
-            -2.8px;
+        letter-spacing: -2.8px;
     }
 
     .hero-desc {
-        font-size:
-            16px;
+        font-size: 16px;
     }
 
-    .feature-title {
-        font-size:
-            25px;
-    }
-
-    .section-title {
-        font-size:
-            28px;
+    .page-title {
+        font-size: 30px;
     }
 
     .result-title {
-        font-size:
-            25px;
+        font-size: 25px;
     }
 }
 
@@ -1005,13 +976,11 @@ css = css.replace(
     t['dir']
 )
 
-st.html(
-    css
-)
+st.html(css)
 
 
 # =========================================================
-# ALLERGENS
+# ALLERGEN DATA
 # =========================================================
 
 ALLERGIES = [
@@ -1181,18 +1150,15 @@ def extract_ingredient_region(
         0
     )
 
-
     y1 = max(
         int(box[1]),
         0
     )
 
-
     x2 = min(
         int(box[2]),
         image.width
     )
-
 
     y2 = min(
         int(box[3]),
@@ -1232,9 +1198,7 @@ def find_matches(
     allergy
 ):
 
-    text_lower = (
-        text.lower()
-    )
+    text_lower = text.lower()
 
 
     cleaned = (
@@ -1257,9 +1221,7 @@ def find_matches(
         []
     ):
 
-        key = (
-            keyword.lower()
-        )
+        key = keyword.lower()
 
 
         if key in text_lower:
@@ -1399,37 +1361,33 @@ with lang_col:
 
 
 # =========================================================
-# HERO
-# =========================================================
-
-st.html(
-    f"""
-    <section class="hero">
-
-        <h1 class="hero-title">
-
-            {t['hero_1']}
-
-            <span class="gradient">
-                {t['hero_2']}
-            </span>
-
-        </h1>
-
-        <div class="hero-desc">
-            {t['hero_desc']}
-        </div>
-
-    </section>
-    """
-)
-
-
-# =========================================================
-# LOGIN / REGISTER
+# NOT LOGGED IN
 # =========================================================
 
 if st.session_state.user is None:
+
+    st.html(
+        f"""
+        <section class="hero">
+
+            <h1 class="hero-title">
+
+                {t['hero_1']}
+
+                <span class="gradient">
+                    {t['hero_2']}
+                </span>
+
+            </h1>
+
+            <div class="hero-desc">
+                {t['hero_desc']}
+            </div>
+
+        </section>
+        """
+    )
+
 
     info_col, login_col = st.columns(
         [
@@ -1441,7 +1399,7 @@ if st.session_state.user is None:
 
 
     # =====================================================
-    # FEATURE SIDE
+    # LEFT
     # =====================================================
 
     with info_col:
@@ -1530,7 +1488,7 @@ if st.session_state.user is None:
 
 
     # =====================================================
-    # LOGIN SIDE
+    # LOGIN
     # =====================================================
 
     with login_col:
@@ -1545,11 +1503,15 @@ if st.session_state.user is None:
 
             st.html(
                 f"""
-                <div class="section-title">
+                <div class="page-title"
+                     style="
+                        font-size:31px;
+                        margin-top:15px;
+                     ">
                     {t['login_title']}
                 </div>
 
-                <div class="section-desc">
+                <div class="page-desc">
                     {t['login_desc']}
                 </div>
                 """
@@ -1595,6 +1557,8 @@ if st.session_state.user is None:
                     }
 
 
+                    st.session_state.page = 'scan'
+
                     st.rerun()
 
 
@@ -1609,11 +1573,15 @@ if st.session_state.user is None:
 
             st.html(
                 f"""
-                <div class="section-title">
+                <div class="page-title"
+                     style="
+                        font-size:31px;
+                        margin-top:15px;
+                     ">
                     {t['register_title']}
                 </div>
 
-                <div class="section-desc">
+                <div class="page-desc">
                     {t['register_desc']}
                 </div>
                 """
@@ -1680,13 +1648,17 @@ if st.session_state.user is None:
 
 
 # =========================================================
-# DASHBOARD
+# LOGGED IN
 # =========================================================
 
 else:
 
     user = st.session_state.user
 
+
+    # =====================================================
+    # USER HEADER
+    # =====================================================
 
     greeting_col, logout_col = st.columns(
         [
@@ -1701,20 +1673,13 @@ else:
 
         st.html(
             f"""
-            <div class="soft-card">
+            <div class="user-card">
 
-                <div style="
-                    color:#8C99A4;
-                    font-size:13px;
-                    margin-bottom:3px;
-                ">
-                    {t['welcome']} {user['name']} 👋
+                <div class="user-small">
+                    {t['hello']} {user['name']} 👋
                 </div>
 
-                <div style="
-                    font-size:21px;
-                    font-weight:900;
-                ">
+                <div class="user-big">
                     {t['today']}
                 </div>
 
@@ -1736,31 +1701,80 @@ else:
             st.rerun()
 
 
-    scan_tab, profile_tab = st.tabs([
-        '◉ ' + t['scan_tab'],
-        '◎ ' + t['profile_tab']
-    ])
+    # =====================================================
+    # NAVIGATION
+    # =====================================================
+
+    if st.session_state.language == 'AR':
+
+        options = [
+            '📷 افحص',
+            '👤 ملفي',
+            '👨‍👩‍👧 عائلتي'
+        ]
+
+    else:
+
+        options = [
+            '📷 Scan',
+            '👤 My Profile',
+            '👨‍👩‍👧 My Family'
+        ]
+
+
+    current_map = {
+        'scan': options[0],
+        'profile': options[1],
+        'family': options[2]
+    }
+
+
+    navigation = st.radio(
+        'Navigation',
+        options,
+        horizontal=True,
+        index=options.index(
+            current_map[
+                st.session_state.page
+            ]
+        ),
+        label_visibility='collapsed'
+    )
+
+
+    if navigation == options[0]:
+
+        st.session_state.page = 'scan'
+
+
+    elif navigation == options[1]:
+
+        st.session_state.page = 'profile'
+
+
+    else:
+
+        st.session_state.page = 'family'
 
 
     # =====================================================
-    # SCAN
+    # SCAN PAGE
     # =====================================================
 
-    with scan_tab:
+    if st.session_state.page == 'scan':
 
         st.html(
             f"""
-            <div style="
-                height:24px;
-            ">
-            </div>
+            <div class="page-head">
 
-            <div class="section-title">
-                {t['scan_title']}
-            </div>
+                <div class="page-title">
+                    {t['scan_title']}
+                </div>
 
-            <div class="section-desc">
-                {t['scan_desc']}
+                <div class="page-desc">
+                    {t['scan_desc']}
+                </div>
+
             </div>
             """
         )
@@ -1820,8 +1834,8 @@ else:
                 f"""
                 <div style="
                     color:#8C99A4;
-                    font-size:14px;
                     margin-bottom:13px;
+                    font-size:14px;
                 ">
                     {t['check_for']}
                 </div>
@@ -1835,7 +1849,7 @@ else:
             )
 
 
-            person_columns = st.columns(
+            people_cols = st.columns(
                 number_of_columns
             )
 
@@ -1844,7 +1858,7 @@ else:
                 people
             ):
 
-                with person_columns[
+                with people_cols[
                     index
                     % number_of_columns
                 ]:
@@ -1856,7 +1870,7 @@ else:
 
                     st.html(
                         f"""
-                        <div class="soft-card">
+                        <div class="person-card">
 
                             <div class="person-name">
                                 {person['name']}
@@ -1956,9 +1970,9 @@ else:
 
                                 st.html(
                                     f"""
-                                    <div class="section-title"
+                                    <div class="page-title"
                                          style="
-                                            font-size:25px;
+                                            font-size:26px;
                                             margin-top:28px;
                                          ">
                                         {t['detected']}
@@ -1989,7 +2003,7 @@ else:
                                 else:
 
                                     with st.expander(
-                                        t['text']
+                                        t['ocr_text']
                                     ):
 
                                         st.write(
@@ -2005,19 +2019,22 @@ else:
 
                                     st.html(
                                         f"""
-                                        <div style="
-                                            height:26px;
-                                        ">
-                                        </div>
+                                        <div class="page-head">
 
-                                        <div class="section-title">
-                                            {t['result']}
+                                            <div class="page-title">
+                                                {t['result']}
+                                            </div>
+
                                         </div>
                                         """
                                     )
 
 
                                     for result in results:
+
+                                        # =================
+                                        # ALLERGY DETECTED
+                                        # =================
 
                                         if result['matches']:
 
@@ -2034,7 +2051,7 @@ else:
                                                 <div class="result-detail">
 
                                                     <div style="
-                                                        color:#A7B0B7;
+                                                        color:#9FAAB2;
                                                         font-size:13px;
                                                         margin-bottom:5px;
                                                     ">
@@ -2050,8 +2067,7 @@ else:
                                                     </div>
 
                                                     <div style="
-                                                        color:#FF9A9A;
-                                                        font-size:14px;
+                                                        color:#FF9999;
                                                     ">
                                                         {t['found']}:
                                                         <strong>
@@ -2114,6 +2130,10 @@ else:
                                             )
 
 
+                                        # =================
+                                        # NO MATCH
+                                        # =================
+
                                         else:
 
                                             if result['is_owner']:
@@ -2133,7 +2153,7 @@ else:
                                             else:
 
                                                 title = (
-                                                    f"{result['name']} "
+                                                    f"{result['name']}، "
                                                     f"{t['family_safe_title']} ✨"
                                                 )
 
@@ -2149,7 +2169,7 @@ else:
                                                 <div class="safe-result">
 
                                                     <div class="result-status-safe">
-                                                        ✓ LOOKING GOOD
+                                                        ✓ CLEAR
                                                     </div>
 
                                                     <div class="result-title">
@@ -2182,24 +2202,48 @@ else:
 
 
     # =====================================================
-    # PROFILE
+    # MY PROFILE PAGE
     # =====================================================
 
-    with profile_tab:
+    elif st.session_state.page == 'profile':
 
         st.html(
             f"""
-            <div style="
-                height:24px;
-            ">
-            </div>
+            <div class="page-head">
 
-            <div class="section-title">
-                {t['profile_title']}
-            </div>
+                <div class="page-title">
+                    {t['profile_title']}
+                </div>
 
-            <div class="section-desc">
-                {t['profile_desc']}
+                <div class="page-desc">
+                    {t['profile_subtitle']}
+                </div>
+
+            </div>
+            """
+        )
+
+
+        st.html(
+            f"""
+            <div class="content-card">
+
+                <div style="
+                    color:#8996A0;
+                    font-size:13px;
+                    margin-bottom:12px;
+                ">
+                    {t['account_info']}
+                </div>
+
+                <div class="profile-name">
+                    {user['name']}
+                </div>
+
+                <div class="profile-email">
+                    {user['email']}
+                </div>
+
             </div>
             """
         )
@@ -2207,6 +2251,32 @@ else:
 
         current = get_user_allergies(
             user['id']
+        )
+
+
+        st.html(
+            """
+            <div style="
+                height:8px;
+            ">
+            </div>
+
+            <div class="card-title">
+                حساسيتي
+            </div>
+            """
+            if st.session_state.language == 'AR'
+            else
+            """
+            <div style="
+                height:8px;
+            ">
+            </div>
+
+            <div class="card-title">
+                My allergies
+            </div>
+            """
         )
 
 
@@ -2238,17 +2308,24 @@ else:
             st.rerun()
 
 
-        st.divider()
+    # =====================================================
+    # FAMILY PAGE
+    # =====================================================
 
+    elif st.session_state.page == 'family':
 
         st.html(
             f"""
-            <div class="section-title">
-                {t['family_title']}
-            </div>
+            <div class="page-head">
 
-            <div class="section-desc">
-                {t['family_desc']}
+                <div class="page-title">
+                    {t['family_title']}
+                </div>
+
+                <div class="page-desc">
+                    {t['family_subtitle']}
+                </div>
+
             </div>
             """
         )
@@ -2284,10 +2361,7 @@ else:
                                 {member['name']}
                             </div>
 
-                            <div style="
-                                color:#8C99A4;
-                                margin:5px 0 11px;
-                            ">
+                            <div class="person-relation">
                                 {member['relation']}
                             </div>
                             """
@@ -2346,24 +2420,25 @@ else:
 
 
         st.html(
-            """
+            f"""
             <div style="
-                height:32px;
+                height:28px;
             ">
             </div>
-            """
-        )
 
+            <div class="content-card">
 
-        st.html(
-            f"""
-            <div class="feature-card">
-
-                <div class="section-title"
-                     style="
-                        font-size:27px;
-                     ">
+                <div class="card-title">
                     ＋ {t['add_member']}
+                </div>
+
+                <div class="card-desc">
+                    {
+                        'سجل الشخص وحساسيته، وبعدها يظهر تلقائياً في كل عملية فحص.'
+                        if st.session_state.language == 'AR'
+                        else
+                        'Save their allergies and mosabb will automatically include them in every scan.'
+                    }
                 </div>
 
             </div>
@@ -2371,12 +2446,12 @@ else:
         )
 
 
-        first_col, second_col = st.columns(
+        col1, col2 = st.columns(
             2
         )
 
 
-        with first_col:
+        with col1:
 
             member_name = st.text_input(
                 t['member_name'],
@@ -2384,7 +2459,7 @@ else:
             )
 
 
-        with second_col:
+        with col2:
 
             relation = st.selectbox(
                 t['relation'],
@@ -2439,7 +2514,7 @@ else:
 
 
                 st.success(
-                    '✓'
+                    f'✓ {member_name}'
                 )
 
 
