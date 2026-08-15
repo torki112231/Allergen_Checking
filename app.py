@@ -48,43 +48,32 @@ translations = {
     'AR': {
         'dir': 'rtl',
 
-        'badge': 'افحص قبل ما تجرّب',
-
-        'hero_1': 'اعرف وش',
-        'hero_2': 'فيه',
-        'hero_3': 'واحـمِ اللي يهمك.',
+        'hero_1': 'افحص قبل',
+        'hero_2': 'ما تتحسس',
 
         'hero_desc':
-            'صورة وحدة تكفي. مسبب يفحص مكونات المنتج ويقارنها '
+            'صورة وحدة تكفي. مسبب يقرأ مكونات المنتج ويقارنها '
             'بحساسيتك وحساسيات أفراد عائلتك.',
 
-        'intro_title':
-            'حساسيتك وعائلتك، بفحص واحد.',
+        'main_card_title':
+            'فحص واحد، ونتيجة مخصصة لك ولعائلتك',
 
-        'intro_desc':
-            'بدل ما تقرأ كل مكوّن وتحاول تتذكر كل حساسية، '
-            'خل مسبب يسويها عنك.',
+        'main_card_desc':
+            'مسبب ما يبحث عن مكونات بشكل عام فقط، '
+            'هو يقارن المنتج بالحساسيات المسجلة لكل شخص عندك.',
 
-        'step1_title': 'صوّر المنتج',
-        'step1_desc':
-            'صوّر قائمة المكونات بشكل واضح.',
-
-        'step2_title': 'مسبب يفحصها',
-        'step2_desc':
-            'نقرأ المكونات ونقارنها بالحساسيات المسجلة.',
-
-        'step3_title': 'اعرف النتيجة',
-        'step3_desc':
-            'تاخذ تنبيه واضح لك ولكل فرد من عائلتك.',
+        'step1': 'صوّر',
+        'step2': 'نفحصلك',
+        'step3': 'تطمّن',
 
         'login': 'تسجيل الدخول',
         'register': 'إنشاء حساب',
 
-        'login_title': 'ياهلا، رجعت لنا',
+        'login_title': 'مرحباً بعودتك 👋',
         'login_desc':
-            'سجل دخولك وكمل فحص منتجاتك بسهولة.',
+            'سجل دخولك وكمل فحص منتجاتك.',
 
-        'register_title': 'خلنا نبدأ',
+        'register_title': 'ابدأ مع مسبب',
         'register_desc':
             'أنشئ حسابك وسجل حساسيتك مرة وحدة.',
 
@@ -102,24 +91,23 @@ translations = {
         'welcome': 'ياهلا',
         'today': 'وش حاب تفحص اليوم؟',
 
-        'scan_title': 'خلنا نشوف وش داخل المنتج',
+        'scan_title': 'صوّر المنتج وخله علينا',
         'scan_desc':
-            'صوّر قائمة المكونات أو ارفع صورة واضحة، ومسبب يتكفل بالباقي.',
+            'صوّر قائمة المكونات أو ارفع صورة واضحة، ومسبب يفحصها لك.',
 
         'check_for':
-            'بنقارن هذا المنتج مع حساسية:',
+            'هذا المنتج راح ينفحص لـ:',
 
         'camera': 'صوّر المكونات',
         'upload': 'أو ارفع صورة',
-
         'analyze': 'افحص المنتج',
 
         'original': 'الصورة الأصلية',
-        'detected': 'هذي قائمة المكونات اللي اكتشفناها',
-        'text': 'النص اللي قدر مسبب يقرأه',
+        'detected': 'قائمة المكونات اللي اكتشفناها',
+        'text': 'النص اللي قرأه مسبب',
 
         'processing':
-            'ثواني... مسبب قاعد يراجع المكونات 🔍',
+            'ثواني... مسبب قاعد يفحص المكونات 🔍',
 
         'no_label':
             'ما قدرنا نحدد قائمة المكونات. جرّب صورة أوضح وأقرب.',
@@ -127,7 +115,7 @@ translations = {
         'no_text':
             'لقينا قائمة المكونات، لكن النص مو واضح كفاية للقراءة.',
 
-        'result': 'وش طلع معنا؟',
+        'result': 'نتيجة الفحص',
 
         'safe_title': 'أمورك طيبة',
         'safe_text':
@@ -139,47 +127,84 @@ translations = {
 
         'family_safe_title': 'أموره طيبة',
         'family_safe_text':
-            'ما لقينا في المكونات المقروءة أي شيء مرتبط بحساسيته المسجلة.',
+            'ما لقينا أي مكوّن مرتبط بحساسيته المسجلة.',
 
-        'family_danger_title': 'انتبه، المنتج مو مناسب لـ',
+        'family_danger_title':
+            'هذا المنتج مو مناسب لـ',
+
         'family_danger_text':
             'لقينا مكونات مرتبطة بحساسيته المسجلة.',
 
         'allergy_type': 'الحساسية المسجلة',
-        'found': 'وش لقينا',
+        'found': 'المكونات اللي لقيناها',
 
-        'profile_title': 'خل مسبب يعرف حساسيتك',
+        'profile_title':
+            'عرف مسبب على حساسيتك',
+
         'profile_desc':
-            'اختر حساسيتك مرة وحدة، وبعدها كل منتج تفحصه بنقارنه فيها تلقائياً.',
+            'اختر الأشياء اللي تتحسس منها، وبعدها كل منتج تفحصه '
+            'راح نقارنه فيها تلقائياً.',
 
-        'my_allergies': 'وش عندك حساسية منه؟',
-        'save': 'حفظ الحساسية',
-        'saved': 'تم حفظ حساسيتك',
+        'my_allergies':
+            'وش عندك حساسية منه؟',
 
-        'family_title': 'خل العائلة معنا',
+        'save':
+            'حفظ الحساسية',
+
+        'saved':
+            'تم حفظ حساسيتك',
+
+        'family_title':
+            'أفراد العائلة',
+
         'family_desc':
-            'أضف أطفالك أو أفراد العائلة، وبعدها نفس الصورة تنفحص للجميع.',
+            'أضف أفراد عائلتك وحساسياتهم، وبعدها نفس المنتج '
+            'ينفحص للجميع بنفس الوقت.',
 
         'no_family':
-            'ما أضفت أحد للحين. عادي، تقدر تستخدم مسبب لنفسك فقط.',
+            'ما أضفت أحد للحين. تقدر تستخدم مسبب لنفسك عادي.',
 
-        'add_member': 'إضافة شخص للعائلة',
-        'member_name': 'اسم الشخص',
-        'relation': 'صلة القرابة',
-        'member_allergies': 'وش عنده حساسية منه؟',
-        'add': 'إضافة',
-        'delete': 'حذف',
+        'add_member':
+            'إضافة فرد للعائلة',
 
-        'son': 'ابن',
-        'daughter': 'ابنة',
-        'mother': 'أم',
-        'father': 'أب',
-        'brother': 'أخ',
-        'sister': 'أخت',
-        'other': 'أخرى',
+        'member_name':
+            'اسم الشخص',
+
+        'relation':
+            'صلة القرابة',
+
+        'member_allergies':
+            'وش عنده حساسية منه؟',
+
+        'add':
+            'إضافة',
+
+        'delete':
+            'حذف',
+
+        'son':
+            'ابن',
+
+        'daughter':
+            'ابنة',
+
+        'mother':
+            'أم',
+
+        'father':
+            'أب',
+
+        'brother':
+            'أخ',
+
+        'sister':
+            'أخت',
+
+        'other':
+            'أخرى',
 
         'need_allergy':
-            'سجل حساسيتك أول من صفحة ملفي وعائلتي عشان نعرف وش نبحث عنه.',
+            'سجل حساسيتك أول من ملفي وعائلتي عشان مسبب يعرف وش يبحث عنه.',
 
         'fill':
             'عب البيانات كلها أول.',
@@ -208,45 +233,34 @@ translations = {
     'EN': {
         'dir': 'ltr',
 
-        'badge': 'Check before you try it',
-
-        'hero_1': 'Know what’s',
-        'hero_2': 'inside',
-        'hero_3': 'Protect who matters.',
+        'hero_1': 'Check before',
+        'hero_2': 'you react',
 
         'hero_desc':
-            'One photo is enough. mosabb checks the ingredients '
-            'against your allergies and your family profiles.',
+            'One photo is enough. mosabb reads the ingredients and checks '
+            'them against your allergies and your family profiles.',
 
-        'intro_title':
-            'Your allergies. Your family. One smart check.',
+        'main_card_title':
+            'One scan. Personalized for you and your family.',
 
-        'intro_desc':
-            'No need to read every ingredient or remember every allergy. '
-            'Let mosabb do the checking for you.',
+        'main_card_desc':
+            'mosabb does more than read ingredients. '
+            'It checks the product against each saved allergy profile.',
 
-        'step1_title': 'Capture',
-        'step1_desc':
-            'Take a clear photo of the ingredient label.',
-
-        'step2_title': 'We check',
-        'step2_desc':
-            'mosabb reads the ingredients and compares them with saved allergies.',
-
-        'step3_title': 'Stay informed',
-        'step3_desc':
-            'Get a clear result for you and everyone in your family.',
+        'step1': 'Capture',
+        'step2': 'We check',
+        'step3': 'Feel sure',
 
         'login': 'Log in',
         'register': 'Create account',
 
-        'login_title': 'Welcome back',
+        'login_title': 'Welcome back 👋',
         'login_desc':
             'Sign in and continue checking products.',
 
-        'register_title': 'Let’s get started',
+        'register_title': 'Start with mosabb',
         'register_desc':
-            'Create an account and save your allergies once.',
+            'Create your account and save your allergies once.',
 
         'name': 'Name',
         'email': 'Email',
@@ -262,81 +276,115 @@ translations = {
         'welcome': 'Hey',
         'today': 'What are we checking today?',
 
-        'scan_title': 'Let’s see what’s inside',
+        'scan_title': 'Take a photo. We’ll handle the rest.',
         'scan_desc':
-            'Take a clear photo of the ingredient label or upload one. mosabb handles the rest.',
+            'Capture the ingredient label or upload a clear image.',
 
         'check_for':
-            'We’ll check this product for:',
+            'This product will be checked for:',
 
         'camera': 'Take a photo',
         'upload': 'Or upload an image',
-
         'analyze': 'Check Product',
 
         'original': 'Original image',
-        'detected': 'Here’s the ingredient label we found',
-        'text': 'What mosabb was able to read',
+        'detected': 'Ingredient label detected',
+        'text': 'What mosabb read',
 
         'processing':
-            'Give us a moment... mosabb is checking the ingredients 🔍',
+            'One moment... mosabb is checking the ingredients 🔍',
 
         'no_label':
-            'We could not find the ingredient label. Try a closer and clearer photo.',
+            'We could not detect the ingredient label. Try a clearer image.',
 
         'no_text':
-            'We found the ingredient label, but the text was not clear enough to read.',
+            'We found the label, but the text was not clear enough to read.',
 
-        'result': 'Here’s what we found',
+        'result': 'Scan Result',
 
         'safe_title': 'Looking good',
         'safe_text':
-            'We did not find anything in the ingredients we read that matches your saved allergies.',
+            'We did not find anything linked to your saved allergies.',
 
         'danger_title': 'Heads up',
         'danger_text':
-            'We found ingredients in this product that match your saved allergies.',
+            'We found ingredients linked to your saved allergies.',
 
         'family_safe_title': 'Looking good',
         'family_safe_text':
             'We did not find anything linked to their saved allergies.',
 
-        'family_danger_title': 'Heads up, this may not be suitable for',
+        'family_danger_title':
+            'This product may not be suitable for',
+
         'family_danger_text':
             'We found ingredients linked to their saved allergies.',
 
         'allergy_type': 'Saved allergy',
-        'found': 'What we found',
+        'found': 'Ingredients found',
 
-        'profile_title': 'Tell mosabb what to look for',
+        'profile_title':
+            'Tell mosabb what to look for',
+
         'profile_desc':
-            'Save your allergies once and every product you scan will be checked automatically.',
+            'Save your allergies once and every product will be checked automatically.',
 
-        'my_allergies': 'What are you allergic to?',
-        'save': 'Save allergies',
-        'saved': 'Your allergies have been saved',
+        'my_allergies':
+            'What are you allergic to?',
 
-        'family_title': 'Bring your family in',
+        'save':
+            'Save allergies',
+
+        'saved':
+            'Your allergies have been saved',
+
+        'family_title':
+            'Family members',
+
         'family_desc':
-            'Add children or family members and check the same product for everyone at once.',
+            'Add your family and their allergies, then check the same product for everyone.',
 
         'no_family':
-            'No family members yet. You can still use mosabb just for yourself.',
+            'No family members yet. You can still use mosabb for yourself.',
 
-        'add_member': 'Add family member',
-        'member_name': 'Name',
-        'relation': 'Relation',
-        'member_allergies': 'What are they allergic to?',
-        'add': 'Add',
-        'delete': 'Delete',
+        'add_member':
+            'Add family member',
 
-        'son': 'Son',
-        'daughter': 'Daughter',
-        'mother': 'Mother',
-        'father': 'Father',
-        'brother': 'Brother',
-        'sister': 'Sister',
-        'other': 'Other',
+        'member_name':
+            'Name',
+
+        'relation':
+            'Relation',
+
+        'member_allergies':
+            'What are they allergic to?',
+
+        'add':
+            'Add',
+
+        'delete':
+            'Delete',
+
+        'son':
+            'Son',
+
+        'daughter':
+            'Daughter',
+
+        'mother':
+            'Mother',
+
+        'father':
+            'Father',
+
+        'brother':
+            'Brother',
+
+        'sister':
+            'Sister',
+
+        'other':
+            'Other',
 
         'need_allergy':
             'Save your allergies first so mosabb knows what to look for.',
@@ -379,40 +427,42 @@ css = """
 <style>
 
 :root {
-    --green: #36F2A4;
-    --aqua: #62D7FF;
+    --green: #35F29E;
+    --cyan: #55D8FF;
     --bg: #060B0F;
-    --card: rgba(15, 22, 28, 0.82);
-    --border: rgba(255, 255, 255, 0.075);
-    --muted: #8C99A4;
-    --red: #FF6A6A;
+    --card: rgba(15,22,28,.84);
+    --border: rgba(255,255,255,.075);
+    --muted: #909DA7;
+    --danger: #FF6D6D;
 }
 
 .stApp {
     direction: __DIR__;
+
     background:
         radial-gradient(
-            circle at 5% 5%,
-            rgba(54,242,164,.12),
-            transparent 27%
+            circle at 5% 8%,
+            rgba(53,242,158,.11),
+            transparent 28%
         ),
         radial-gradient(
-            circle at 95% 2%,
-            rgba(65,115,255,.10),
-            transparent 25%
+            circle at 95% 4%,
+            rgba(67,116,255,.10),
+            transparent 24%
         ),
         linear-gradient(
-            150deg,
+            145deg,
             #06100C 0%,
-            #070C11 48%,
-            #080A10 100%
+            #070C11 50%,
+            #070A10 100%
         );
-    color: #F7FAFB;
+
+    color: #F8FAFB;
 }
 
 .block-container {
-    max-width: 1160px;
-    padding-top: 1.4rem;
+    max-width: 1180px;
+    padding-top: 1.3rem;
     padding-bottom: 5rem;
 }
 
@@ -429,60 +479,35 @@ header {
 }
 
 
-/* =========================================
-   LOGO
-========================================= */
+/* LOGO */
 
 .logo {
-    font-size: 32px;
+    font-size: 33px;
     font-weight: 950;
-    letter-spacing: -1.6px;
-    color: #F8FAFB;
+    letter-spacing: -1.7px;
 }
 
 
-/* =========================================
-   HERO
-========================================= */
+/* HERO */
 
 .hero {
-    padding: 66px 0 52px 0;
-}
-
-.hero-badge {
-    display: inline-block;
-
-    padding: 9px 16px;
-
-    border-radius: 999px;
-
-    background: rgba(54,242,164,.07);
-
-    border: 1px solid rgba(54,242,164,.23);
-
-    color: #74F8BE;
-
-    font-size: 14px;
-
-    font-weight: 850;
-
-    margin-bottom: 25px;
+    padding: 78px 0 58px 0;
 }
 
 .hero-title {
     font-size: clamp(
-        54px,
-        7vw,
-        90px
+        58px,
+        7.5vw,
+        96px
     );
 
-    line-height: .98;
+    line-height: .96;
 
-    letter-spacing: -4.5px;
+    letter-spacing: -5px;
 
     font-weight: 950;
 
-    max-width: 940px;
+    max-width: 950px;
 
     margin: 0;
 }
@@ -492,7 +517,7 @@ header {
         linear-gradient(
             90deg,
             var(--green),
-            var(--aqua)
+            var(--cyan)
         );
 
     -webkit-background-clip: text;
@@ -503,9 +528,9 @@ header {
 .hero-desc {
     margin-top: 28px;
 
-    max-width: 730px;
+    max-width: 760px;
 
-    color: #99A6AF;
+    color: #9DA9B2;
 
     line-height: 1.85;
 
@@ -513,9 +538,139 @@ header {
 }
 
 
-/* =========================================
-   SECTIONS
-========================================= */
+/* LARGE FEATURE CARD */
+
+.feature-card {
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 30px;
+
+    border-radius: 26px;
+
+    background:
+        radial-gradient(
+            circle at 10% 15%,
+            rgba(53,242,158,.10),
+            transparent 35%
+        ),
+        linear-gradient(
+            145deg,
+            rgba(17,27,32,.94),
+            rgba(9,15,20,.88)
+        );
+
+    border:
+        1px solid rgba(53,242,158,.14);
+
+    box-shadow:
+        0 30px 95px rgba(0,0,0,.28);
+
+    margin-bottom: 16px;
+}
+
+.feature-icon {
+    width: 58px;
+
+    height: 58px;
+
+    border-radius: 18px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 29px;
+
+    background:
+        rgba(53,242,158,.08);
+
+    border:
+        1px solid rgba(53,242,158,.18);
+
+    margin-bottom: 22px;
+}
+
+.feature-title {
+    font-size: 30px;
+
+    font-weight: 950;
+
+    line-height: 1.2;
+
+    letter-spacing: -.8px;
+
+    margin-bottom: 10px;
+}
+
+.feature-desc {
+    color: var(--muted);
+
+    line-height: 1.75;
+
+    max-width: 510px;
+}
+
+
+/* 3 STEPS */
+
+.step-card {
+    min-height: 145px;
+
+    padding: 22px;
+
+    border-radius: 22px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.035),
+            rgba(255,255,255,.012)
+        );
+
+    border:
+        1px solid var(--border);
+
+    transition: all .2s ease;
+}
+
+.step-card:hover {
+    transform: translateY(-3px);
+
+    border-color:
+        rgba(53,242,158,.25);
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.20);
+}
+
+.step-icon {
+    font-size: 30px;
+
+    margin-bottom: 11px;
+}
+
+.step-word {
+    font-size: 23px;
+
+    font-weight: 950;
+}
+
+
+/* SECTIONS */
 
 .section-title {
     font-size: 35px;
@@ -530,115 +685,24 @@ header {
 .section-desc {
     color: var(--muted);
 
-    line-height: 1.75;
+    line-height: 1.7;
 
     margin-bottom: 24px;
 }
 
 
-/* =========================================
-   GLASS CARD
-========================================= */
-
-.glass {
-    padding: 29px;
-
-    border-radius: 25px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(18,28,33,.91),
-            rgba(10,16,21,.84)
-        );
-
-    border: 1px solid var(--border);
-
-    box-shadow:
-        0 30px 100px rgba(0,0,0,.28);
-
-    backdrop-filter: blur(18px);
-}
-
-
-/* =========================================
-   STEPS
-========================================= */
-
-.steps-heading {
-    font-size: 28px;
-
-    font-weight: 950;
-
-    letter-spacing: -.7px;
-
-    margin-bottom: 10px;
-}
-
-.steps-description {
-    color: #8D9AA4;
-
-    line-height: 1.75;
-
-    margin-bottom: 25px;
-}
-
-.step-card {
-    min-height: 165px;
-
-    padding: 22px;
-
-    border-radius: 20px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.035),
-            rgba(255,255,255,.015)
-        );
-
-    border: 1px solid var(--border);
-}
-
-.step-number {
-    color: var(--green);
-
-    font-size: 13px;
-
-    font-weight: 950;
-
-    margin-bottom: 17px;
-}
-
-.step-title {
-    font-size: 21px;
-
-    font-weight: 950;
-
-    margin-bottom: 8px;
-}
-
-.step-desc {
-    color: #8996A0;
-
-    line-height: 1.65;
-
-    font-size: 14px;
-}
-
-
-/* =========================================
-   SMALL CARDS
-========================================= */
+/* SOFT CARD */
 
 .soft-card {
     padding: 18px 20px;
 
     border-radius: 18px;
 
-    background: rgba(255,255,255,.025);
+    background:
+        rgba(255,255,255,.025);
 
-    border: 1px solid var(--border);
+    border:
+        1px solid var(--border);
 
     margin-bottom: 10px;
 }
@@ -658,9 +722,7 @@ header {
 }
 
 
-/* =========================================
-   PILLS
-========================================= */
+/* PILLS */
 
 .pill {
     display: inline-block;
@@ -671,9 +733,11 @@ header {
 
     border-radius: 999px;
 
-    background: rgba(255,90,90,.08);
+    background:
+        rgba(255,90,90,.08);
 
-    border: 1px solid rgba(255,90,90,.15);
+    border:
+        1px solid rgba(255,90,90,.15);
 
     color: #FF9696;
 
@@ -683,15 +747,9 @@ header {
 }
 
 
-/* =========================================
-   RESULTS
-========================================= */
+/* RESULTS */
 
 .safe-result {
-    position: relative;
-
-    overflow: hidden;
-
     padding: 31px;
 
     border-radius: 26px;
@@ -701,27 +759,20 @@ header {
     background:
         radial-gradient(
             circle at 92% 15%,
-            rgba(54,242,164,.23),
+            rgba(53,242,158,.23),
             transparent 30%
         ),
         linear-gradient(
             135deg,
-            rgba(54,242,164,.11),
-            rgba(54,242,164,.025)
+            rgba(53,242,158,.11),
+            rgba(53,242,158,.025)
         );
 
     border:
-        1px solid rgba(54,242,164,.25);
-
-    box-shadow:
-        0 24px 70px rgba(0,0,0,.18);
+        1px solid rgba(53,242,158,.25);
 }
 
 .danger-result {
-    position: relative;
-
-    overflow: hidden;
-
     padding: 31px;
 
     border-radius: 26px;
@@ -742,9 +793,6 @@ header {
 
     border:
         1px solid rgba(255,90,90,.28);
-
-    box-shadow:
-        0 24px 70px rgba(0,0,0,.18);
 }
 
 .result-status-safe {
@@ -796,55 +844,54 @@ header {
 
     border-radius: 16px;
 
-    background: rgba(0,0,0,.18);
+    background:
+        rgba(0,0,0,.18);
 
     border:
         1px solid rgba(255,255,255,.06);
 }
 
 
-/* =========================================
-   BUTTONS
-========================================= */
+/* BUTTONS */
 
 .stButton > button {
     min-height: 49px;
 
-    border-radius: 14px !important;
+    border-radius:
+        14px !important;
 
     border:
         1px solid rgba(255,255,255,.09);
 
-    background: #111B21;
+    background:
+        #111B21;
 
     font-weight: 850;
 
-    transition: all .2s ease;
+    transition:
+        all .2s ease;
 }
 
 .stButton > button:hover {
-    transform: translateY(-1px);
+    transform:
+        translateY(-1px);
 
     border-color:
         var(--green) !important;
 
     color:
         var(--green) !important;
-
-    box-shadow:
-        0 12px 30px rgba(54,242,164,.08);
 }
 
 
-/* =========================================
-   INPUTS
-========================================= */
+/* INPUTS */
 
 .stTextInput input {
     background:
         #0D151A !important;
 
-    min-height: 49px;
+    min-height:
+        49px;
 
     border-radius:
         14px !important;
@@ -865,37 +912,39 @@ header {
 }
 
 
-/* =========================================
-   UPLOAD
-========================================= */
+/* UPLOAD */
 
 [data-testid="stFileUploaderDropzone"] {
-    min-height: 180px;
+    min-height:
+        180px;
 
-    border-radius: 21px;
+    border-radius:
+        21px;
 
     background:
-        rgba(54,242,164,.022);
+        rgba(53,242,158,.022);
 
     border:
-        1px dashed rgba(54,242,164,.27);
+        1px dashed rgba(53,242,158,.27);
 }
 
 
-/* =========================================
-   TABS
-========================================= */
+/* TABS */
 
 .stTabs [data-baseweb="tab-list"] {
-    gap: 8px;
+    gap:
+        8px;
 }
 
 .stTabs [data-baseweb="tab"] {
-    padding: 10px 17px;
+    padding:
+        10px 17px;
 
-    border-radius: 11px;
+    border-radius:
+        11px;
 
-    font-weight: 800;
+    font-weight:
+        800;
 }
 
 .stTabs [aria-selected="true"] {
@@ -903,44 +952,48 @@ header {
         var(--green) !important;
 
     background:
-        rgba(54,242,164,.08) !important;
+        rgba(53,242,158,.08) !important;
 }
 
 [data-testid="stAlert"] {
-    border-radius: 16px;
+    border-radius:
+        16px;
 }
 
 
-/* =========================================
-   MOBILE
-========================================= */
+/* MOBILE */
 
 @media (max-width: 700px) {
 
     .hero {
-        padding-top: 34px;
+        padding-top:
+            40px;
     }
 
     .hero-title {
-        letter-spacing: -2.5px;
+        letter-spacing:
+            -2.8px;
     }
 
     .hero-desc {
-        font-size: 16px;
+        font-size:
+            16px;
+    }
+
+    .feature-title {
+        font-size:
+            25px;
     }
 
     .section-title {
-        font-size: 28px;
-    }
-
-    .glass {
-        padding: 21px;
+        font-size:
+            28px;
     }
 
     .result-title {
-        font-size: 25px;
+        font-size:
+            25px;
     }
-
 }
 
 </style>
@@ -952,11 +1005,13 @@ css = css.replace(
     t['dir']
 )
 
-st.html(css)
+st.html(
+    css
+)
 
 
 # =========================================================
-# ALLERGEN DATA
+# ALLERGENS
 # =========================================================
 
 ALLERGIES = [
@@ -1096,7 +1151,10 @@ def extract_ingredient_region(
     boxes = results[0].boxes
 
 
-    if boxes is None or len(boxes) == 0:
+    if (
+        boxes is None
+        or len(boxes) == 0
+    ):
 
         return None
 
@@ -1174,7 +1232,9 @@ def find_matches(
     allergy
 ):
 
-    text_lower = text.lower()
+    text_lower = (
+        text.lower()
+    )
 
 
     cleaned = (
@@ -1197,7 +1257,9 @@ def find_matches(
         []
     ):
 
-        key = keyword.lower()
+        key = (
+            keyword.lower()
+        )
 
 
         if key in text_lower:
@@ -1344,10 +1406,6 @@ st.html(
     f"""
     <section class="hero">
 
-        <div class="hero-badge">
-            ✦ {t['badge']}
-        </div>
-
         <h1 class="hero-title">
 
             {t['hero_1']}
@@ -1355,10 +1413,6 @@ st.html(
             <span class="gradient">
                 {t['hero_2']}
             </span>
-
-            <br>
-
-            {t['hero_3']}
 
         </h1>
 
@@ -1379,29 +1433,33 @@ if st.session_state.user is None:
 
     info_col, login_col = st.columns(
         [
-            0.95,
-            1.05
+            1,
+            1
         ],
         gap='large'
     )
 
 
     # =====================================================
-    # HOW IT WORKS
+    # FEATURE SIDE
     # =====================================================
 
     with info_col:
 
         st.html(
             f"""
-            <div class="glass">
+            <div class="feature-card">
 
-                <div class="steps-heading">
-                    {t['intro_title']}
+                <div class="feature-icon">
+                    🛡️
                 </div>
 
-                <div class="steps-description">
-                    {t['intro_desc']}
+                <div class="feature-title">
+                    {t['main_card_title']}
+                </div>
+
+                <div class="feature-desc">
+                    {t['main_card_desc']}
                 </div>
 
             </div>
@@ -1420,16 +1478,12 @@ if st.session_state.user is None:
                 f"""
                 <div class="step-card">
 
-                    <div class="step-number">
-                        01
+                    <div class="step-icon">
+                        📷
                     </div>
 
-                    <div class="step-title">
-                        {t['step1_title']}
-                    </div>
-
-                    <div class="step-desc">
-                        {t['step1_desc']}
+                    <div class="step-word">
+                        {t['step1']}
                     </div>
 
                 </div>
@@ -1443,16 +1497,12 @@ if st.session_state.user is None:
                 f"""
                 <div class="step-card">
 
-                    <div class="step-number">
-                        02
+                    <div class="step-icon">
+                        🔍
                     </div>
 
-                    <div class="step-title">
-                        {t['step2_title']}
-                    </div>
-
-                    <div class="step-desc">
-                        {t['step2_desc']}
+                    <div class="step-word">
+                        {t['step2']}
                     </div>
 
                 </div>
@@ -1466,16 +1516,12 @@ if st.session_state.user is None:
                 f"""
                 <div class="step-card">
 
-                    <div class="step-number">
-                        03
+                    <div class="step-icon">
+                        🛡️
                     </div>
 
-                    <div class="step-title">
-                        {t['step3_title']}
-                    </div>
-
-                    <div class="step-desc">
-                        {t['step3_desc']}
+                    <div class="step-word">
+                        {t['step3']}
                     </div>
 
                 </div>
@@ -1484,7 +1530,7 @@ if st.session_state.user is None:
 
 
     # =====================================================
-    # LOGIN
+    # LOGIN SIDE
     # =====================================================
 
     with login_col:
@@ -1558,10 +1604,6 @@ if st.session_state.user is None:
                         t['wrong']
                     )
 
-
-        # =================================================
-        # REGISTER
-        # =================================================
 
         with register_tab:
 
@@ -1829,16 +1871,6 @@ else:
                     )
 
 
-            st.html(
-                """
-                <div style="
-                    height:12px;
-                ">
-                </div>
-                """
-            )
-
-
             camera_col, upload_col = st.columns(
                 2,
                 gap='large'
@@ -1903,7 +1935,6 @@ else:
                         try:
 
                             model = load_model()
-
 
                             reader = load_ocr()
 
@@ -1988,10 +2019,6 @@ else:
 
                                     for result in results:
 
-                                        # =================
-                                        # DANGER
-                                        # =================
-
                                         if result['matches']:
 
                                             details = ''
@@ -2043,7 +2070,6 @@ else:
                                                     f"{result['name']} ⚠️"
                                                 )
 
-
                                                 description = (
                                                     t[
                                                         'danger_text'
@@ -2057,7 +2083,6 @@ else:
                                                     f"{t['family_danger_title']} "
                                                     f"{result['name']} ⚠️"
                                                 )
-
 
                                                 description = (
                                                     t[
@@ -2089,10 +2114,6 @@ else:
                                             )
 
 
-                                        # =================
-                                        # SAFE
-                                        # =================
-
                                         else:
 
                                             if result['is_owner']:
@@ -2101,7 +2122,6 @@ else:
                                                     f"{t['safe_title']} "
                                                     f"{result['name']} ✨"
                                                 )
-
 
                                                 description = (
                                                     t[
@@ -2116,7 +2136,6 @@ else:
                                                     f"{result['name']} "
                                                     f"{t['family_safe_title']} ✨"
                                                 )
-
 
                                                 description = (
                                                     t[
@@ -2156,7 +2175,6 @@ else:
                             st.error(
                                 'Analysis error'
                             )
-
 
                             st.code(
                                 str(error)
@@ -2339,7 +2357,7 @@ else:
 
         st.html(
             f"""
-            <div class="glass">
+            <div class="feature-card">
 
                 <div class="section-title"
                      style="
