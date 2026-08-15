@@ -1,5 +1,7 @@
 import streamlit as st
 import numpy as np
+import textwrap
+
 from PIL import Image
 from ultralytics import YOLO
 import easyocr
@@ -32,8 +34,15 @@ create_tables()
 
 
 # =========================================================
-# SESSION
+# HELPERS
 # =========================================================
+
+def html(content):
+    st.markdown(
+        textwrap.dedent(content),
+        unsafe_allow_html=True
+    )
+
 
 if 'user' not in st.session_state:
     st.session_state.user = None
@@ -50,6 +59,8 @@ translations = {
 
     'AR': {
         'direction': 'rtl',
+        'lang_ar': 'العربية',
+        'lang_en': 'English',
 
         'hero_badge': 'سلامتك تبدأ قبل أول لقمة',
         'hero_title_1': 'اعرف',
@@ -129,9 +140,10 @@ translations = {
         'disclaimer': 'mosabb أداة مساعدة وليست بديلاً عن قراءة تحذيرات العبوة أو التوجيه الطبي.'
     },
 
-
     'EN': {
         'direction': 'ltr',
+        'lang_ar': 'العربية',
+        'lang_en': 'English',
 
         'hero_badge': 'Safety starts before the first bite',
         'hero_title_1': 'Know the',
@@ -213,54 +225,32 @@ translations = {
 }
 
 
-t = translations[
-    st.session_state.language
-]
+t = translations[st.session_state.language]
 
 
 # =========================================================
 # CSS
 # =========================================================
 
-st.markdown(
+html(
     f'''
     <style>
 
-    /* Background */
-
     .stApp {{
         background:
-            radial-gradient(
-                circle at 15% 20%,
-                rgba(28, 255, 157, 0.08),
-                transparent 30%
-            ),
-            radial-gradient(
-                circle at 85% 20%,
-                rgba(70, 120, 255, 0.08),
-                transparent 28%
-            ),
-            #070B0F;
-
+            radial-gradient(circle at 10% 15%, rgba(38, 243, 154, 0.10), transparent 28%),
+            radial-gradient(circle at 90% 10%, rgba(60, 120, 255, 0.09), transparent 25%),
+            linear-gradient(160deg, #07100D 0%, #080D13 45%, #090C12 100%);
         color: #F7F9FA;
-    }}
-
-
-    .block-container {{
-        max-width: 1200px;
-        padding-top: 2rem;
-        padding-bottom: 5rem;
-    }}
-
-
-    /* RTL / LTR */
-
-    .stApp {{
+        min-height: 100vh;
         direction: {t['direction']};
     }}
 
-
-    /* Hide Streamlit chrome */
+    .block-container {{
+        max-width: 1180px;
+        padding-top: 1.2rem;
+        padding-bottom: 5rem;
+    }}
 
     #MainMenu {{
         visibility: hidden;
@@ -274,247 +264,180 @@ st.markdown(
         background: transparent !important;
     }}
 
-
-    /* Logo */
-
-    .mosabb-logo {{
-        font-size: 28px;
-        font-weight: 900;
-        letter-spacing: -1px;
-        margin-bottom: 10px;
+    .top-shell {{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 6px 2px 18px 2px;
     }}
 
-    .mosabb-dot {{
-        color: #30F29B;
+    .logo {{
+        font-size: 31px;
+        font-weight: 950;
+        letter-spacing: -1.5px;
+        color: #F8FAFB;
     }}
 
-
-    /* Hero */
+    .logo-dot {{
+        color: #2CF19C;
+    }}
 
     .hero {{
-        padding: 55px 10px 45px 10px;
-        position: relative;
+        padding: 62px 0 45px 0;
     }}
 
     .hero-badge {{
-        display: inline-block;
-        padding: 8px 15px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 9px 15px;
         border-radius: 999px;
-        border: 1px solid rgba(48, 242, 155, .25);
-        background: rgba(48, 242, 155, .07);
-        color: #70F7BC;
+        border: 1px solid rgba(44, 241, 156, 0.20);
+        background: rgba(44, 241, 156, 0.07);
+        color: #74F7BE;
         font-size: 14px;
-        font-weight: 700;
-        margin-bottom: 23px;
+        font-weight: 800;
+        margin-bottom: 24px;
     }}
 
-    .hero h1 {{
-        font-size: clamp(48px, 8vw, 92px);
-        line-height: 0.95;
-        letter-spacing: -4px;
+    .hero-title {{
         margin: 0;
-        max-width: 900px;
-        font-weight: 900;
+        max-width: 930px;
+        font-size: clamp(48px, 7vw, 88px);
+        line-height: 0.98;
+        letter-spacing: -4px;
+        font-weight: 950;
     }}
 
     .gradient-text {{
-        background: linear-gradient(
-            90deg,
-            #30F29B,
-            #65D8FF
-        );
-
+        background: linear-gradient(90deg, #2CF19C, #6AD4FF);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }}
 
-    .hero p {{
-        color: #9BA7B2;
-        font-size: 20px;
-        max-width: 750px;
-        line-height: 1.8;
-        margin-top: 30px;
+    .hero-desc {{
+        color: #9CA7B1;
+        max-width: 760px;
+        font-size: 19px;
+        line-height: 1.85;
+        margin-top: 25px;
     }}
 
-
-    /* Cards */
-
-    .glass-card {{
-        background: rgba(18, 25, 32, 0.72);
-        border: 1px solid rgba(255,255,255,0.07);
-        box-shadow:
-            0 20px 70px rgba(0,0,0,0.25),
-            inset 0 1px 0 rgba(255,255,255,0.03);
-
-        backdrop-filter: blur(20px);
-
+    .panel {{
+        background: rgba(15, 21, 27, 0.78);
+        border: 1px solid rgba(255, 255, 255, 0.07);
         border-radius: 24px;
-
-        padding: 25px;
-
-        margin-bottom: 18px;
+        padding: 28px;
+        box-shadow:
+            0 28px 80px rgba(0, 0, 0, 0.28),
+            inset 0 1px 0 rgba(255, 255, 255, 0.025);
+        backdrop-filter: blur(20px);
     }}
 
-
-    .mini-card {{
-        background:
-            linear-gradient(
-                140deg,
-                rgba(255,255,255,0.055),
-                rgba(255,255,255,0.015)
-            );
-
-        border: 1px solid rgba(255,255,255,0.07);
-
-        padding: 18px 20px;
-
-        border-radius: 18px;
-
-        margin-bottom: 12px;
+    .panel-soft {{
+        background: linear-gradient(
+            145deg,
+            rgba(44, 241, 156, 0.045),
+            rgba(255, 255, 255, 0.02)
+        );
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        border-radius: 22px;
+        padding: 24px;
     }}
-
-
-    /* Section titles */
 
     .section-kicker {{
-        color: #30F29B;
-        text-transform: uppercase;
+        color: #35F1A0;
         font-size: 12px;
-        font-weight: 800;
+        font-weight: 900;
         letter-spacing: 1.5px;
-        margin-bottom: 5px;
+        margin-bottom: 7px;
     }}
 
     .section-title {{
-        font-size: 36px;
-        font-weight: 850;
-        margin-bottom: 4px;
+        font-size: 35px;
+        font-weight: 900;
+        letter-spacing: -1px;
+        margin-bottom: 7px;
     }}
 
     .section-desc {{
         color: #87939D;
-        margin-bottom: 25px;
         font-size: 15px;
+        line-height: 1.75;
+        margin-bottom: 24px;
     }}
 
+    .profile-card {{
+        border: 1px solid rgba(255,255,255,0.07);
+        background: rgba(255,255,255,0.025);
+        border-radius: 18px;
+        padding: 16px 18px;
+        margin-bottom: 10px;
+    }}
 
-    /* Pills */
+    .profile-name {{
+        font-size: 17px;
+        font-weight: 850;
+    }}
+
+    .profile-allergy {{
+        margin-top: 6px;
+        color: #FF9494;
+        font-size: 14px;
+    }}
 
     .allergy-pill {{
         display: inline-block;
-
         padding: 7px 12px;
-
-        border-radius: 999px;
-
-        background: rgba(255, 85, 85, .09);
-
-        color: #FF9292;
-
-        border: 1px solid rgba(255, 85, 85, .15);
-
         margin: 4px;
-
-        font-size: 13px;
-
-        font-weight: 700;
-    }}
-
-
-    .safe-pill {{
-        display: inline-block;
-
-        padding: 7px 12px;
-
         border-radius: 999px;
-
-        background: rgba(48, 242, 155, .09);
-
-        color: #70F7BC;
-
-        border: 1px solid rgba(48, 242, 155, .15);
-
-        margin: 4px;
-
+        background: rgba(255, 91, 91, 0.09);
+        border: 1px solid rgba(255, 91, 91, 0.15);
+        color: #FF9A9A;
         font-size: 13px;
-
-        font-weight: 700;
+        font-weight: 800;
     }}
-
-
-    /* Buttons */
 
     .stButton > button {{
-        border-radius: 14px !important;
-
         min-height: 48px;
-
-        font-weight: 750;
-
-        border: 1px solid rgba(255,255,255,.09);
-
-        background:
-            linear-gradient(
-                135deg,
-                #132027,
-                #11171D
-            );
-
-        transition: all .25s ease;
+        border-radius: 14px !important;
+        border: 1px solid rgba(255,255,255,0.09);
+        background: linear-gradient(135deg, #142027, #11181E);
+        color: #F7F9FA;
+        font-weight: 800;
+        transition: all 0.20s ease;
     }}
-
 
     .stButton > button:hover {{
-        transform: translateY(-2px);
-
-        border-color: #30F29B !important;
-
-        color: #30F29B !important;
-
-        box-shadow:
-            0 10px 30px rgba(48,242,155,.08);
+        transform: translateY(-1px);
+        border-color: #2CF19C !important;
+        color: #2CF19C !important;
+        box-shadow: 0 12px 35px rgba(44, 241, 156, 0.08);
     }}
-
-
-    /* Inputs */
 
     .stTextInput input {{
         background: #0E151B !important;
-
-        border: 1px solid rgba(255,255,255,.08) !important;
-
+        border: 1px solid rgba(255,255,255,0.08) !important;
         border-radius: 14px !important;
-
         min-height: 48px;
     }}
 
-
     [data-baseweb="select"] > div {{
         background: #0E151B !important;
-
         border-radius: 14px !important;
-
-        border-color: rgba(255,255,255,.08) !important;
+        border-color: rgba(255,255,255,0.08) !important;
     }}
-
-
-    /* Upload */
 
     [data-testid="stFileUploaderDropzone"] {{
         background:
             linear-gradient(
                 145deg,
-                rgba(48,242,155,.035),
-                rgba(255,255,255,.015)
+                rgba(44, 241, 156, 0.035),
+                rgba(255,255,255,0.015)
             );
-
-        border: 1px dashed rgba(48,242,155,.25);
-
+        border: 1px dashed rgba(44,241,156,0.28);
         border-radius: 20px;
     }}
-
-
-    /* Tabs */
 
     .stTabs [data-baseweb="tab-list"] {{
         gap: 8px;
@@ -524,86 +447,48 @@ st.markdown(
     .stTabs [data-baseweb="tab"] {{
         border-radius: 12px;
         padding: 10px 18px;
-        background: rgba(255,255,255,.03);
+        background: rgba(255,255,255,0.03);
+        font-weight: 750;
     }}
 
     .stTabs [aria-selected="true"] {{
-        background: rgba(48,242,155,.10) !important;
-        color: #30F29B !important;
+        background: rgba(44,241,156,0.10) !important;
+        color: #2CF19C !important;
     }}
-
-
-    /* Alerts */
 
     [data-testid="stAlert"] {{
-        border-radius: 18px;
-        border: 1px solid rgba(255,255,255,.06);
+        border-radius: 16px;
+        border: 1px solid rgba(255,255,255,0.06);
     }}
-
-
-    /* Divider */
 
     hr {{
-        border-color: rgba(255,255,255,.06);
+        border-color: rgba(255,255,255,0.06);
     }}
 
-
-    /* Language switch */
-
-    .language-label {{
-        color: #77838D;
-        font-size: 12px;
-        margin-bottom: 3px;
-    }}
-
-
-    /* Scan glow */
-
-    .scanner-card {{
-        position: relative;
-
-        padding: 30px;
-
-        border-radius: 25px;
-
-        background:
-            linear-gradient(
-                150deg,
-                rgba(48,242,155,.055),
-                rgba(13,19,25,.75)
-            );
-
-        border: 1px solid rgba(48,242,155,.12);
-
-        box-shadow:
-            0 30px 90px rgba(0,0,0,.30);
-    }}
-
-
-    /* Mobile */
-
-    @media only screen and (max-width: 700px) {{
-
+    @media only screen and (max-width: 760px) {{
         .hero {{
-            padding-top: 30px;
+            padding-top: 34px;
         }}
 
-        .hero h1 {{
+        .hero-title {{
             letter-spacing: -2px;
         }}
 
-        .hero p {{
-            font-size: 17px;
+        .hero-desc {{
+            font-size: 16px;
         }}
 
         .section-title {{
             font-size: 28px;
         }}
+
+        .panel {{
+            padding: 20px;
+        }}
     }}
 
     </style>
-    ''',
-    unsafe_allow_html=True
+    '''
 )
 
 
@@ -702,7 +587,6 @@ ALLERGEN_KEYWORDS = {
 
 @st.cache_resource
 def load_model():
-
     return YOLO(
         'models/ingredient_label_model.pt'
     )
@@ -710,21 +594,15 @@ def load_model():
 
 @st.cache_resource
 def load_ocr():
-
     return easyocr.Reader(
         ['ar', 'en'],
         gpu=False
     )
 
 
-def extract_ingredient_region(
-    image,
-    model
-):
+def extract_ingredient_region(image, model):
 
-    image_array = np.array(
-        image
-    )
+    image_array = np.array(image)
 
     results = model(
         image_array,
@@ -791,10 +669,7 @@ def extract_ingredient_region(
     )
 
 
-def run_ocr(
-    image,
-    reader
-):
+def run_ocr(image, reader):
 
     results = reader.readtext(
         np.array(image),
@@ -802,15 +677,10 @@ def run_ocr(
         paragraph=True
     )
 
-    return ' '.join(
-        results
-    )
+    return ' '.join(results)
 
 
-def find_allergen_matches(
-    text,
-    allergy
-):
+def find_allergen_matches(text, allergy):
 
     text_lower = text.lower()
 
@@ -840,10 +710,7 @@ def find_allergen_matches(
 
         if keyword_lower in text_lower:
 
-            found.append(
-                keyword
-            )
-
+            found.append(keyword)
             continue
 
 
@@ -853,27 +720,21 @@ def find_allergen_matches(
 
         for word in cleaned_words:
 
-            if fuzz.ratio(
+            score = fuzz.ratio(
                 word,
                 keyword_lower
-            ) >= 88:
+            )
 
-                found.append(
-                    keyword
-                )
+            if score >= 88:
 
+                found.append(keyword)
                 break
 
 
-    return list(
-        set(found)
-    )
+    return list(set(found))
 
 
-def check_people(
-    text,
-    people
-):
+def check_people(text, people):
 
     output = []
 
@@ -908,19 +769,19 @@ def check_people(
 # =========================================================
 
 top_left, top_right = st.columns(
-    [8, 2]
+    [7, 3],
+    vertical_alignment='center'
 )
 
 
 with top_left:
 
-    st.markdown(
+    html(
         '''
-        <div class="mosabb-logo">
-            mosabb<span class="mosabb-dot">.</span>
+        <div class="logo">
+            mosabb<span class="logo-dot">.</span>
         </div>
-        ''',
-        unsafe_allow_html=True
+        '''
     )
 
 
@@ -933,16 +794,15 @@ with top_right:
             'العربية'
             if st.session_state.language == 'AR'
             else 'English'
-        )
+        ),
+        key='language_switch'
     )
-
 
     selected_language = (
         'AR'
         if language == 'العربية'
         else 'EN'
     )
-
 
     if selected_language != st.session_state.language:
 
@@ -954,7 +814,7 @@ with top_right:
 # HERO
 # =========================================================
 
-st.markdown(
+html(
     f'''
     <div class="hero">
 
@@ -962,7 +822,7 @@ st.markdown(
             ✦ {t["hero_badge"]}
         </div>
 
-        <h1>
+        <h1 class="hero-title">
             {t["hero_title_1"]}
             <span class="gradient-text">
                 {t["hero_title_2"]}
@@ -971,29 +831,84 @@ st.markdown(
             {t["hero_title_3"]}
         </h1>
 
-        <p>
+        <div class="hero-desc">
             {t["hero_desc"]}
-        </p>
+        </div>
 
     </div>
-    ''',
-    unsafe_allow_html=True
+    '''
 )
 
 
 # =========================================================
-# LOGIN
+# LOGIN / REGISTER
 # =========================================================
 
 if st.session_state.user is None:
 
-    col1, col2 = st.columns(
-        [1.15, 0.85],
+    left, right = st.columns(
+        [1, 1],
         gap='large'
     )
 
 
-    with col1:
+    with left:
+
+        html(
+            '''
+            <div class="panel-soft">
+                <div style="
+                    font-size: 13px;
+                    color: #2CF19C;
+                    font-weight: 900;
+                    letter-spacing: 1px;
+                    margin-bottom: 12px;
+                ">
+                    FAMILY PROTECTION
+                </div>
+
+                <div style="
+                    font-size: 34px;
+                    font-weight: 900;
+                    letter-spacing: -1px;
+                    line-height: 1.15;
+                    margin-bottom: 14px;
+                ">
+                    One scan.<br>
+                    Everyone protected.
+                </div>
+
+                <div style="
+                    color: #8D99A3;
+                    line-height: 1.8;
+                    font-size: 15px;
+                ">
+                    Create your allergy profile once.
+                    Add family members if you want.
+                    mosabb checks the same product against everyone automatically.
+                </div>
+
+                <div style="
+                    margin-top: 26px;
+                    display: grid;
+                    gap: 10px;
+                ">
+                    <div class="profile-card">
+                        <div class="profile-name">You</div>
+                        <div class="profile-allergy">Milk / Dairy</div>
+                    </div>
+
+                    <div class="profile-card">
+                        <div class="profile-name">Child</div>
+                        <div class="profile-allergy">Peanuts · Sesame</div>
+                    </div>
+                </div>
+            </div>
+            '''
+        )
+
+
+    with right:
 
         login_tab, register_tab = st.tabs([
             t['login'],
@@ -1003,7 +918,7 @@ if st.session_state.user is None:
 
         with login_tab:
 
-            st.markdown(
+            html(
                 f'''
                 <div class="section-kicker">
                     MOSABB ACCOUNT
@@ -1012,8 +927,7 @@ if st.session_state.user is None:
                 <div class="section-title">
                     {t["login"]}
                 </div>
-                ''',
-                unsafe_allow_html=True
+                '''
             )
 
 
@@ -1032,7 +946,8 @@ if st.session_state.user is None:
 
             if st.button(
                 t['enter'],
-                use_container_width=True
+                use_container_width=True,
+                key='login_button'
             ):
 
                 user = login_user(
@@ -1060,7 +975,7 @@ if st.session_state.user is None:
 
         with register_tab:
 
-            st.markdown(
+            html(
                 f'''
                 <div class="section-kicker">
                     NEW ACCOUNT
@@ -1069,8 +984,7 @@ if st.session_state.user is None:
                 <div class="section-title">
                     {t["register"]}
                 </div>
-                ''',
-                unsafe_allow_html=True
+                '''
             )
 
 
@@ -1095,7 +1009,8 @@ if st.session_state.user is None:
 
             if st.button(
                 t['create_account'],
-                use_container_width=True
+                use_container_width=True,
+                key='register_button'
             ):
 
                 if (
@@ -1130,46 +1045,8 @@ if st.session_state.user is None:
                         )
 
 
-    with col2:
-
-        st.markdown(
-            '''
-            <div class="glass-card">
-
-                <div style="
-                    font-size:55px;
-                    margin-bottom:20px;
-                ">
-                    🛡️
-                </div>
-
-                <div style="
-                    font-size:25px;
-                    font-weight:850;
-                    margin-bottom:12px;
-                ">
-                    One scan.
-                    <br>
-                    Every person protected.
-                </div>
-
-                <div style="
-                    color:#82909A;
-                    line-height:1.8;
-                ">
-                    Your allergy profile stays with you.
-                    Add family members and mosabb checks
-                    everyone automatically.
-                </div>
-
-            </div>
-            ''',
-            unsafe_allow_html=True
-        )
-
-
 # =========================================================
-# APP
+# LOGGED IN
 # =========================================================
 
 else:
@@ -1178,38 +1055,38 @@ else:
 
 
     welcome_col, logout_col = st.columns(
-        [8, 2]
+        [8, 2],
+        vertical_alignment='center'
     )
 
 
     with welcome_col:
 
-        st.markdown(
+        html(
             f'''
-            <div class="mini-card">
-
+            <div class="panel-soft" style="padding:18px 20px;">
                 <span style="
-                    color:#81909A;
+                    color:#82909A;
+                    font-size:14px;
                 ">
                     {t["welcome"]}
                 </span>
 
                 <span style="
-                    font-size:18px;
-                    font-weight:800;
+                    font-size:19px;
+                    font-weight:900;
+                    margin-inline-start:8px;
                 ">
                     {user["name"]}
                 </span>
 
                 <span style="
-                    margin-left:5px;
+                    margin-inline-start:5px;
                 ">
                     👋
                 </span>
-
             </div>
-            ''',
-            unsafe_allow_html=True
+            '''
         )
 
 
@@ -1217,7 +1094,8 @@ else:
 
         if st.button(
             t['logout'],
-            use_container_width=True
+            use_container_width=True,
+            key='logout_button'
         ):
 
             st.session_state.user = None
@@ -1236,7 +1114,7 @@ else:
 
     with scan_tab:
 
-        st.markdown(
+        html(
             f'''
             <br>
 
@@ -1251,8 +1129,7 @@ else:
             <div class="section-desc">
                 {t["scan_desc"]}
             </div>
-            ''',
-            unsafe_allow_html=True
+            '''
         )
 
 
@@ -1295,7 +1172,7 @@ else:
 
         else:
 
-            st.markdown(
+            html(
                 f'''
                 <div style="
                     color:#7F8C96;
@@ -1304,13 +1181,11 @@ else:
                 ">
                     {t["checking_for"]}
                 </div>
-                ''',
-                unsafe_allow_html=True
+                '''
             )
 
 
-            pills = ''
-
+            cards = ''
 
             for person in people_to_check:
 
@@ -1318,40 +1193,19 @@ else:
                     person['allergies']
                 )
 
-                pills += f'''
-                    <div class="mini-card">
-
-                        <strong>
-                            {person["name"]}
-                        </strong>
-
-                        <span style="
-                            color:#6E7C87;
-                            margin:0 7px;
-                        ">
-                            ·
-                        </span>
-
-                        <span style="
-                            color:#FF9898;
-                        ">
-                            {allergies_text}
-                        </span>
-
+                cards += f'''
+                <div class="profile-card">
+                    <div class="profile-name">
+                        {person["name"]}
                     </div>
+                    <div class="profile-allergy">
+                        {allergies_text}
+                    </div>
+                </div>
                 '''
 
 
-            st.markdown(
-                pills,
-                unsafe_allow_html=True
-            )
-
-
-            st.markdown(
-                '<div style="height:15px"></div>',
-                unsafe_allow_html=True
-            )
+            html(cards)
 
 
             input_col1, input_col2 = st.columns(
@@ -1408,15 +1262,10 @@ else:
                 )
 
 
-                st.markdown(
-                    '<div style="height:10px"></div>',
-                    unsafe_allow_html=True
-                )
-
-
                 if st.button(
                     '✦ ' + t['analyze'],
-                    use_container_width=True
+                    use_container_width=True,
+                    key='analyze_button'
                 ):
 
                     with st.spinner(
@@ -1445,14 +1294,13 @@ else:
 
                             else:
 
-                                st.markdown(
+                                html(
                                     f'''
                                     <div class="section-title"
-                                         style="font-size:25px">
+                                         style="font-size:25px; margin-top:25px;">
                                         {t["detected_area"]}
                                     </div>
-                                    ''',
-                                    unsafe_allow_html=True
+                                    '''
                                 )
 
 
@@ -1481,9 +1329,7 @@ else:
                                         t['ocr_text']
                                     ):
 
-                                        st.write(
-                                            text
-                                        )
+                                        st.write(text)
 
 
                                     results = check_people(
@@ -1492,7 +1338,7 @@ else:
                                     )
 
 
-                                    st.markdown(
+                                    html(
                                         f'''
                                         <br>
 
@@ -1503,8 +1349,7 @@ else:
                                         <div class="section-title">
                                             {t["result"]}
                                         </div>
-                                        ''',
-                                        unsafe_allow_html=True
+                                        '''
                                     )
 
 
@@ -1528,9 +1373,9 @@ else:
 
                                             for allergy, matches in result['matches'].items():
 
-                                                st.markdown(
+                                                html(
                                                     f'''
-                                                    <div class="glass-card">
+                                                    <div class="panel-soft">
 
                                                         <div style="
                                                             color:#7D8994;
@@ -1541,8 +1386,8 @@ else:
 
                                                         <div style="
                                                             font-size:22px;
-                                                            font-weight:850;
-                                                            margin-bottom:12px;
+                                                            font-weight:900;
+                                                            margin:6px 0 12px 0;
                                                         ">
                                                             {allergy}
                                                         </div>
@@ -1555,8 +1400,7 @@ else:
                                                         </div>
 
                                                     </div>
-                                                    ''',
-                                                    unsafe_allow_html=True
+                                                    '''
                                                 )
 
 
@@ -1600,7 +1444,7 @@ else:
 
     with profile_tab:
 
-        st.markdown(
+        html(
             f'''
             <br>
 
@@ -1615,8 +1459,7 @@ else:
             <div class="section-desc">
                 {t["profile_desc"]}
             </div>
-            ''',
-            unsafe_allow_html=True
+            '''
         )
 
 
@@ -1628,13 +1471,15 @@ else:
         selected_allergies = st.multiselect(
             t['my_allergies'],
             ALLERGIES,
-            default=current_allergies
+            default=current_allergies,
+            key='my_allergies'
         )
 
 
         if st.button(
             t['save_allergies'],
-            use_container_width=True
+            use_container_width=True,
+            key='save_my_allergies'
         ):
 
             save_user_allergies(
@@ -1649,13 +1494,10 @@ else:
             st.rerun()
 
 
-        st.markdown(
-            '<br><hr><br>',
-            unsafe_allow_html=True
-        )
+        st.divider()
 
 
-        st.markdown(
+        html(
             f'''
             <div class="section-kicker">
                 FAMILY PROTECTION
@@ -1668,8 +1510,7 @@ else:
             <div class="section-desc">
                 {t["family_desc"]}
             </div>
-            ''',
-            unsafe_allow_html=True
+            '''
         )
 
 
@@ -1680,9 +1521,7 @@ else:
 
         if family:
 
-            cols = st.columns(
-                2
-            )
+            cols = st.columns(2)
 
 
             for index, member in enumerate(
@@ -1695,11 +1534,11 @@ else:
                         border=True
                     ):
 
-                        st.markdown(
+                        html(
                             f'''
                             <div style="
-                                font-size:24px;
-                                font-weight:850;
+                                font-size:23px;
+                                font-weight:900;
                                 margin-bottom:5px;
                             ">
                                 {member["name"]}
@@ -1707,25 +1546,26 @@ else:
 
                             <div style="
                                 color:#7F8C96;
-                                margin-bottom:14px;
+                                margin-bottom:12px;
                             ">
                                 {member["relation"]}
                             </div>
-                            ''',
-                            unsafe_allow_html=True
+                            '''
                         )
 
 
+                        pills = ''
+
                         for allergy in member['allergies']:
 
-                            st.markdown(
-                                f'''
-                                <span class="allergy-pill">
-                                    {allergy}
-                                </span>
-                                ''',
-                                unsafe_allow_html=True
-                            )
+                            pills += f'''
+                            <span class="allergy-pill">
+                                {allergy}
+                            </span>
+                            '''
+
+
+                        html(pills)
 
 
                         if st.button(
@@ -1751,24 +1591,24 @@ else:
             )
 
 
-        st.markdown(
-            '<br><br>',
-            unsafe_allow_html=True
-        )
+        st.markdown('<br>', unsafe_allow_html=True)
 
 
-        st.markdown(
+        html(
             f'''
-            <div class="glass-card">
+            <div class="panel">
+
+                <div class="section-kicker">
+                    NEW FAMILY MEMBER
+                </div>
 
                 <div class="section-title"
-                     style="font-size:26px">
+                     style="font-size:26px;">
                     ＋ {t["add_member"]}
                 </div>
 
             </div>
-            ''',
-            unsafe_allow_html=True
+            '''
         )
 
 
@@ -1780,7 +1620,8 @@ else:
         with add_col1:
 
             member_name = st.text_input(
-                t['member_name']
+                t['member_name'],
+                key='member_name'
             )
 
 
@@ -1796,7 +1637,8 @@ else:
                     t['brother'],
                     t['sister'],
                     t['other']
-                ]
+                ],
+                key='relation'
             )
 
 
@@ -1809,7 +1651,8 @@ else:
 
         if st.button(
             '＋ ' + t['add'],
-            use_container_width=True
+            use_container_width=True,
+            key='add_family_member_button'
         ):
 
             if not member_name:
